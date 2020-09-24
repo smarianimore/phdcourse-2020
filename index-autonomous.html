@@ -1,0 +1,852 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+
+    <title> Emerging IT Technologies: Blockchains and Autonomous Systems </title>
+    <meta content="PhD course 'Emerging IT Technologies: Blockchains and Autonomous Systems' given by Stefano Mariani" name="description">
+    <meta content="Stefano Mariani" name="author">
+
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <link href="css/reset.css" rel="stylesheet">
+    <link href="css/reveal.css" rel="stylesheet">
+    <link href="css/theme/blood.css" rel="stylesheet">
+    <!-- black, white, league, beige, sky, blood, night, serif, simple, solarized -->
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+<div class="reveal">
+    <div class="slides">
+        <section data-autoslide="5000" data-transition="fade">
+
+            <h2> Autonomous Systems: </h2>
+            <br/>
+            <h3> an overview </h3>
+            <br/>
+            <br/>
+            <p><a href="http://stefanomariani.apice.unibo.it"> Stefano Mariani </a></p>
+            <p><small><em> Università di Modena e Reggio Emilia </em></small></p>
+
+        </section>
+        <section data-transition="convex" data-autoslide="2000">
+
+            <h3> Outline </h3>
+
+            <ol>
+                <li class="fragment"> On the notion of autonomy </li>
+                <li class="fragment"> Agents </li>
+                <li class="fragment"> Multiagent systems </li>
+                <li class="fragment"> Game theory: individual stance </li>
+                <li class="fragment"> Game theory: collective stance </li>
+                <li class="fragment"> Multiagent interactions </li>
+            </ol>
+
+        </section>
+        <section data-transition="convex">
+            <section data-transition="zoom">
+
+                <h2> On the notion of autonomy </h2>
+
+            </section>
+            <section>
+
+                <h3> On the notion of autonomy </h3>
+
+                <ul>
+                    <li class="fragment"> Why bother? Social pressure: unproductive mind work and non-qualified time
+                        consuming activities might be delegated to artificial systems </li>
+                </ul>
+            </section>
+            <section>
+                <ul>
+                    <li class="fragment"> Who does what? Mostly, this is no longer an issue: artificial system are
+                        generally very welcome to do whatever we like </li>
+                    <li class="fragment"> Who takes the decision? Autonomy is at least about <em>deliberation</em> as
+                        much as about <em>action</em> </li>
+                    <li class="fragment"> Executive vs. motivational autonomy [Castelfranchi, 1995]: given a goal, the agent is autonomous in
+                        achieving it by itself, vs. the agent’s goals are somehow self-generated, not externally imposed </li>
+                </ul>
+            </section>
+            <section>
+                <ul>
+                    <li class="fragment"> [pic hype cycles 2018-2020 AO] </li>
+                </ul>
+            </section>
+            <section>
+                <h3> Research questions </h3>
+
+                <ul>
+                    <li class="fragment"> Is there just one single notion of autonomy? </li>
+                    <li class="fragment"> How do we <em>model</em> autonomy in artificial / computational systems? </li>
+                    <li class="fragment"> How do we <em>engineer</em> autonomy in artificial / computational systems? </li>
+                </ul>
+            </section>
+            <section>
+                <h3> Autonomy in context </h3>
+
+                <ul>
+                    <li class="fragment"> According to [Maturana and Varela, 1980], in the domain of systems biology,
+                        autonomous systems acquire the property of specifying their own rules of behaviour, do not work
+                        as mere transducers or functions for converting input instructions into output products, and are
+                        themselves sources of their own activity </li>
+                </ul>
+            </section>
+            <section>
+                <ul>
+                    <li class="fragment"> From Unmanned Systems Integrated Roadmap FY 2011-2036: autonomous systems
+                        are self-directed toward a <em>goal</em> in that they do not require outside control, but rather are
+                        governed by laws and strategies that direct their behavior. Initially, these control algorithms
+                        are created and tested by teams of human operators and software developers. However, if <em>machine learning</em>
+                        is utilized, autonomous systems can develop modified strategies for themselves by which
+                        they select their behavior. An autonomous system is self-directed by choosing the behavior it
+                        follows to reach a human-directed goal. </li>
+                </ul>
+            </section>
+            <section>
+                <ul>
+                    <li class="fragment"> Various levels of autonomy in any system guide how much and how often
+                        humans need to interact or intervene with the autonomous system: [pic slide 15 C3 AO]</li>
+                </ul>
+            </section>
+            <section>
+                <ul>
+                    <li class="fragment"> Level of <em>automation</em> for cars [SAE J3016, 2018]: [pic slide 21,22 C3 AO] </li>
+                </ul>
+
+            </section>
+        </section>
+        <section data-transition="convex">
+            <section data-transition="zoom">
+
+                <h2> Agents </h2>
+
+            </section>
+            <section>
+
+                <h3> Software engineering perspective </h3>
+
+                <ul>
+                    <li class="fragment"> This is what we learnt an object is: State (instance or state variables) +
+                        Methods (operations). Methods are requested by other objects </li>
+                    <li class="fragment"> Actually, other than state and methods: Internal threads + Event handling +
+                        Messaging + Access to contextual information + ... </li>
+                    <li class="fragment"> Is it still an object? Would you still call a car enriched with a reaction
+                        engine, capable of flying, with an automated pilot, still a car? Or would you rather invent
+                        another name (e.g., "airplane") to refer to it?  </li>
+                </ul>
+            </section>
+            <section>
+                <ul>
+                    <li class="fragment"> The "grown-up" objects and services of modern adaptive software are: not
+                        purely functional (they do not simply answer to request of services but rather try to achieve an
+                        objective, a goal) + Capable of unsolicited execution (due to internal threads) + Adaptive
+                        (they can dynamically acquire information and tune their behavior accordingly) + Situated
+                        (access to contextual and environmental information) + Social (they interact with each other
+                        either via messaging or via mediated interactions via the environment). This is very close to
+                        the definition of agents... </li>
+                </ul>
+            </section>
+            <section>
+                <h3> Software agents </h3>
+
+                <ul>
+                    <li class="fragment"> A software agent is a component that is
+                        <ul>
+                            <li class="fragment"> <em>Goal-oriented</em>: designed and deployed to achieve a specific goal (or to perform a specific task) </li>
+                            <li class="fragment"> <em>Autonomous</em>: capable of acting in autonomy towards the achievement of its specific goals, without being
+                                subject to a globally controlled thread of control </li>
+                            <li class="fragment"> <em>Situated</em>: it execute in the context of a specific environment
+                                (computational or physical), and is able act in that environment by sensing and
+                                affecting (via sensors and actuators) </li>
+                            <li class="fragment"> <em>Social</em>. Interact with other agents in a multiagent systems. </li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h3> Autonomy in software agents </h3>
+
+                <ul>
+                    <li class="fragment"> Autonomy related to "decision making": Centralized decision making, as in
+                        service-oriented and object-based applications, achieves global goal via design by delegation of
+                        control vs. Distributed decision making, as in agent-based applications, achieves global goal via
+                        design by delegation of responsibility (<em>agents can say no</em>) </li>
+                    <li class="fragment"> Agents can also decide to autonomously activate towards the pursuing of the
+                        goal, without the need of any specific event or solicitation: <em>proactivity</em> is a sort of extreme expression of
+                        autonomy </li>
+                    <li class="fragment"> Sociality refers to the fact that interactions are more sophisticated than
+                        client-server ones: exchange of knowledge + delegation of tasks + auctions, negotiations +
+                        mediated interactions via common portions of the environment </li>
+                    <li class="fragment"> Castelfranchi vision [AO: slide 26-28 C3] (?) </li>
+                </ul>
+            </section>
+            <section>
+                <ul>
+                    <li class="fragment"> Clearly, it is not always black and white, as modern objects have features
+                        that can make objects resemble agents. In effect, several systems for "agent-oriented
+                        programming" can be considered simply as advanced tools for object-oriented programming
+                        or for more dynamic forms of service-oriented programming </li>
+                </ul>
+            </section>
+            <section>
+                <h3> Artificial intelligence perspective </h3>
+
+                <ul>
+                    <li class="fragment"> For many researchers, agents do not simply have to be goal-oriented,
+                        autonomous, situated, but they have to be "intelligent", that typically means they have to
+                        integrate "artificial intelligence" tools: Neural networks, Logic-based reasoning, Conversational
+                        capabilities (interact via natural language), ...  </li>
+                    <li class="fragment"> Treating a program as if it is intelligent ("the program <em>wants</em> the input
+                        in a different format") is called the <em>intentional stance</em>, and it'’'s helpful to us as programmers
+                        to think this way </li>
+                    <li class="fragment"> The intentional stance leads us to program agents at the knowledge level (Newell),
+                        that means reasoning about programs in terms of: Facts and Beliefs (rather than variables and data) +
+                        Goals and behaviors (rather than functionalities and methods) + Desires / preferences. </li>
+                </ul>
+            </section>
+            <section>
+                <ul>
+                    <li class="fragment"> A possible definition of <em>intelligence</em> is "the capability to act purposefully
+                        towards the achievement of goals" </li>
+                    <li class="fragment"> Hence for an agent to be regarded (observed) as being intelligent it is enough
+                        simply to know how to achieve a given goal, which implies some sort of <em>reasoning</em> </li>
+                    <li class="fragment"> E.g. a "smart" thermostat: </li>
+                    <ul>
+                        <li class="fragment"> Goal: keep temp at 27° </li>
+                        <li class="fragment"> Percept: temp </li>
+                        <li class="fragment"> Actions: + / - temp </li>
+                        <li class="fragment"> Reasoning: <bold>if</bold> temp < 27 <bold>then</bold> + <bold>else</bold> if temp < 27 <bold>then</bold> - </li>
+                    </ul>
+                </ul>
+            </section>
+            <section>
+                <ul>
+                    <li class="fragment"> Too simplistic, too low level of abstraction </li>
+                    <li class="fragment"> Imagine a self-driving car: </li>
+                    <ul>
+                        <li class="fragment"> Goal: don't kill pedestrians </li>
+                        <li class="fragment"> Percept: current "situation" (where are pedestrians, other cars, weather conditions, ...) </li>
+                        <li class="fragment"> Actions: gas, brake, steer, ... </li>
+                        <li class="fragment"> Reasoning: still if-then-else?? </li>
+                    </ul>
+                    <li class="fragment"> Obviously not: <em>theoretical</em> + <em>practical reasoning</em> </li>
+                </ul>
+            </section>
+            <section>
+                <h3> Intelligence as "observing reasoning" </h3>
+
+                <ul>
+                    <li class="fragment"> Theoretical reasoning: a process which affects beliefs, to expand / improve
+                        knowledge about what's happening (<em>inference</em>) </li>
+                    <li class="fragment"> Practical reasoning: weigthing conflicting considerations for and against
+                        competing options, given what the agent desires and it believes (<em>decision making</em>) </li>
+                    <ul>
+                        <li class="fragment"> <em>Deliberation</em>: decision about what goal to pursue (adopting <em>intentions</em>) </li>
+                        <li class="fragment"> <em>Means-ends reasoning</em>: decision about how to achieve goal (carry out actions) </li>
+                    </ul>
+                    <li class="fragment"> BDI architecture has both goals (as special beliefs called desires) and intentions
+                        (as sequence of action called plans, either hard-coded or automatically built) </li>
+                </ul>
+            </section>
+            <section>
+                <h3> On rationality </h3>
+
+                <ul>
+                    <li class="fragment"> Newell's Principle of <em>Rationality</em>: If an agent has the knowledge that an action will
+                        lead to the accomplishment of one of its goals (or to the maximization of its utility), then it will
+                        select that action (Game Theory and Decision Theory) </li>
+                    <li class="fragment"> BDI is a very successful and general model to "think" at software agents: the agent has
+                        Beliefs (what it knows about the world), Desires (what it desires to happen), Intentions (what it
+                        wants to do to satisfy its desires) </li>
+                </ul>
+            </section>
+            <section>
+                <h3> Agent architectures </h3>
+
+                <ul>
+                    <li class="fragment"> What types of architectures can we
+                        conceive for agents [pics FZ 36-46]?
+                        <ul>
+                            <li class="fragment"> <em>Reactive</em> (or tropistic): "if-then-else" behaviour, simple and efficient, not very expressive, no real autonomy (agents act solely upon external stimuli) </li>
+                            <li class="fragment"> Reactive with <em>State</em> (hysteretic): tracking the state of the world enables the agent to act in context, e.g. different actions with same stimulus </li>
+                            <li class="fragment"> <em>Goal-oriented</em>: the agent plans its actions towards achievement of a desired state [image slide 29] </li>
+                            <li class="fragment"> <em>Utility-oriented</em>: the agent aims at maximising a function of some parameter measuring what it gains from a given state [image slide 31] </li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <ul>
+                    <li class="fragment"> JADE example ? </li>
+                </ul>
+            </section>
+            <section>
+                <ul>
+                    <li class="fragment"> Jason example ? </li>
+                </ul>
+
+            </section>
+        </section>
+        <section data-transition="convex">
+            <section data-transition="zoom">
+
+                <h2> Multiagent systems </h2>
+
+            </section>
+            <section>
+
+                <h3> Systems of agents </h3>
+
+                <ul>
+                    <li class="fragment"> Multiagent Systems (MAS): Systems or "organizations" of <em>interacting</em> autonomous
+                        agents, possibly distributed over multiple computers and/or in an environment, possibly belonging
+                        to different stakeholders / organization (federated / open systems), collaborating and/or competing
+                        to, respectively, achieve a shared global goal or maximise their own utility, possibly interacting
+                        with a computational or physical environment (that could also mediate interactions) </li>
+                </ul>
+
+            </section>
+            <section>
+
+                <h3> Why? </h3>
+
+                <ul>
+                    <li class="fragment"> A single agent has finite rationality, that is, a limit on the amount of knowledge he can rationally
+                        handle in a given time </li>
+                    <li class="fragment"> Distribution: several problems are intrinsically distributed, in that knowledge
+                        can be acquired only locally </li>
+                    <li class="fragment"> Interactions between personal agents: many problems requires components of different
+                        stakeholders / organizations to interact, so the problem is intrinsically composed of multiple agents </li>
+                    <li class="fragment"> Modelling for real-world organizations: software systems devoted to support the work of
+                        some human organization should somehow "mimic" the structure of the real-world organizations </li>
+                    <li class="fragment"> Multiagent systems are "paradigmatic" of modern distributed systems: made up of
+                        decentralized autonomous components (sensors, peers, mobile devices, etc.) interacting with each
+                        other in complex way (P2P networks, MANETs, pervasive computing environments) and situated in
+                        some environment, computational or physical </li>
+                </ul>
+            </section>
+            <section>
+                <h3> Applications </h3>
+
+                <ul>
+                    <li class="fragment"> Trading and e-commerce: auctions, stock market, b2b, ... </li>
+                    <li class="fragment"> Control of physical Processes: manufacturing pipeline, home/office automation, traffic control, ... </li>
+                    <li class="fragment"> Shared resources management: cellular networks, power grid, computing, ... </li>
+                    <li class="fragment"> Workflow Management: scientific research, administrative work, ... </li>
+                    <li class="fragment"> Simulation of complex processes: biological systems, social sciences, games, ... </li>
+                    <li class="fragment"> Optimization: any operational research domain, such as logistics, transportation, ... </li>
+                </ul>
+            </section>
+            <section>
+                <h3> Software engineering perspective </h3>
+
+                <ul>
+                    <li class="fragment"> In a multiagent systems, agent participate by providing the capability of
+                        achieving a goal in autonomy (vs. objects/services offering interfaces) </li>
+                    <li class="fragment"> The execution of an agent is autonomous, subject to its own internal decision (vs. objects/services being invoked) </li>
+                    <li class="fragment"> Agents interact in many complex ways, such as negotiation, auction, stigmergy, ... (vs. objects/services request/response) </li>
+                    <li class="fragment"> Agents interact because it is beneficial to themselves or the system (vs. objects/service are obligated to) </li>
+                </ul>
+            </section>
+            <section>
+                <h3> Artificial intelligence perspective </h3>
+
+                <ul>
+                    <li class="fragment"> Different agents may have either conflicting goals, or individual goals contributing
+                    to a systemic one, or a shared goal </li>
+                    <li class="fragment"> In any case, the actions of an agent may influence other agents possibility of achieving their own goal </li>
+                    <li class="fragment"> <em>Distributed decision making</em>: </li>
+                    <ul>
+                        <li class="fragment"> strategy: how to behave taking into account what others could do? (competition, cooperation, ...) </li>
+                        <li class="fragment"> protocol: what means to use to interact? (negotiation, argumentation, stigmergy, ...) </li>
+                        <li class="fragment"> emergence: which global properties may arise from agents' individual behaviour? (equilibrium, self-organisation, <div class="."></div>) </li>
+                    </ul>
+                </ul>
+            </section>
+            <section>
+                <h3> Strategic thinking </h3>
+
+                <ul>
+                    <li class="fragment"> Assume we have: </li>
+                    <ul>
+                        <li class="fragment"> Agents $Ag = {i, j, ..., k}$ </li>
+                        <li class="fragment"> each with its own goal $G_{Ag}$ </li>
+                        <li class="fragment"> each with its own pool of actions $Ac_{Ag} = {a_{1}, a_{2}, ..., a_{n}}$ </li>
+                    </ul>
+                    <li class="fragment"> How should agents decide which action to carry out (their <em>strategy</em>),
+                        assuming they <em>cannot communicate</em>? </li>
+                </ul>
+            </section>
+        </section>
+        <section data-transition="convex">
+            <section data-transition="zoom">
+
+                <h2> Game theory: individual stance </h2>
+
+            </section>
+            <section>
+                <h3> Game theory </h3>
+
+                <ul>
+                    <li class="fragment"> To reply we need <em>game theory</em>: "analysis of strategies for dealing with
+                        <em>competitive</em> situations where the outcome of a participant's choice of action <em>depends</em>
+                        critically on the actions of other participants" </li>
+                    <li class="fragment"> Notice that agents influence each other even if they do not communicate, as
+                        long as they act within a <em>shared environment</em>! </li>
+                </ul>
+            </section>
+            <section>
+                <h3> Rationality </h3>
+
+                <ul>
+                    <li class="fragment"> Agents are <em>rational</em> (remember Newell's principle?): given $Ac$ and $G$ they
+                    will attempt the actions that maximise the possibility to achieve $G$ </li>
+                    <li class="fragment"> To do so they should be able to evaluate the outcome $\omega$ of an action
+                        (e.g. success or failure) and the utility $u$ that such action brings towards achievement of $G$ </li>
+                    <li class="fragment"> The behaviour of rational agents of favouring actions that maximise $u$ is called <em>preference</em> </li>
+                </ul>
+            </section>
+            <section>
+                <ul>
+                    <li class="fragment"> <em>Utility functions</em> are used to model preferences: $u_{i} = \Omega \rightarrow \mathbb{R}$ where $\Omega = {\omega_{1}, ..., \omega_{M}}$ </li>
+                    <li class="fragment"> Utility functions enable to define <em>preference orderings</em> over outcomes
+                        (hence, actions): $\omega >=_i \omega'$ means $u_i(\omega) >= u_i(\omega')$ as for different
+                        agents $u$ and preferences may vary</li>
+                    <li class="fragment"> [pic FZ MAS 36] </li>
+                </ul>
+            </section>
+            <section>
+                <h3> Multiagent encounters (or, games) </h3>
+
+                <ul>
+                    <li class="fragment"> If multiple agents either act (almost) simultaneously or do not have means to
+                        observe each other actions, the outcome of their behaviours will be some combination of each
+                        individual outcome </li>
+                    <li class="fragment"> A <em>state transformer function</em> models such combined outcome on the shared environment: $\tau = Ac_i \times Ac_j \times... \rightarrow \Omega$ </li>
+                </ul>
+            </section>
+            <section>
+                <ul>
+                    <li class="fragment"> E.g. considering both agents $i$ and $j$ to only have actions $a_1$ and $a_2$ available ($\tau(Ac_{i} = {a_1, a_2}, Ac_{j} = {a_1, a_2}$): </li>
+                    <ol>
+                        <li class="fragment"> if $\tau(a_2,a_2) = \omega_1$ and $\tau(a_2,a_1) = \omega_2$ and $\tau(a_1,a_2) = \omega_3$ and $\tau(a_1,a_1) = \omega_4$ then the environment is sensitive to both agents </li>
+                        <li class="fragment"> if $\tau(a_2,a_2) = \omega_1$ and $\tau(a_2,a_1) = \omega_1$ and $\tau(a_1,a_2) = \omega_1$ and $\tau(a_1,a_1) = \omega_1$ then the environment is sensitive to none </li>
+                        <li class="fragment"> if $\tau(a_2,a_2) = \omega_1$ and $\tau(a_2,a_1) = \omega_2$ and $\tau(a_1,a_2) = \omega_1$ and $\tau(a_1,a_1) = \omega_2$ then the environment is sensitive only to agent $j$ </li>
+                    </ol>
+                </ul>
+            </section>
+            <section>
+                <ul>
+                    <li class="fragment"> Such state transformer functions let us find preferences, hence define a rational choice </li>
+                    <li class="fragment"> Suppose to be in case 1 from previous examples, with utility functions:
+                        $$u_i(\omega_1) = 1, u_i(\omega_2) = 1, u_i(\omega_3) = 4, u_i(\omega_4) = 4$$
+                        $$u_j(\omega_1) = 1, u_i(\omega_2) = 4, u_i(\omega_3) = 1, u_i(\omega_4) = 4$$ </li>
+                    <li class="fragment"> Then, agent $i$ preferences are: $( (a_1,a_1) \geq_i (a_1,a_2) ) \gt_i ( (a_2,a_1) \geq_i (a_2,a_2) )$ </li>
+                    <li class="fragment"> Thus, agent $i$ rational choice is $a_1$: every outcome where it does $a_1$ are better than those where he chooses $a_2$, <em>independently</em> of what $j$ does </li>
+                </ul>
+            </section>
+            <section>
+                <h3> Dominant strategies </h3>
+
+                <ul>
+                    <li class="fragment"> The criteria according to which choosing actions happen reflect the agent <em>strategy</em> (e.g. rational vs random) </li>
+                    <li class="fragment"> A strategy $s_1$ is said <em>dominant</em> with respect to $s_2$ if $s_1$ is always preferred to $s_2$ for every possible outcome </li>
+                    <li class="fragment"> A rational agent will never play a dominated strategy </li>
+                    <li class="fragment"> If there is only one non-dominated strategy, that's the trivial rstrategy to adopt </li>
+                </ul>
+            </section>
+            <section>
+                <h3> Zero-sum games </h3>
+
+                <ul>
+                    <li class="fragment"> In <em>zero-sum</em> games the utilities add up to $0$: $u_i(\omega) + u_j(\omega) = 0 \forall \omega \in \Omega$ </li>
+                    <li class="fragment"> Zero-sum games are strictly competitive: no agent can gain something if no other loses something (every win-lose game basically) </li>
+                    <li class="fragment"> In these games there is no rational choice without information about other players' strategies! </li>
+                    <li class="fragment"> [pic FZ MAS 44] </li>
+                </ul>
+            </section>
+            <section>
+                <h3> Non zero-sum games </h3>
+
+                <ul>
+                    <li class="fragment"> Real-life situations are usually non zero-sum: there is always some "compromise" </li>
+                    <li class="fragment"> [https://youtu.be/LJS7Igvk6ZM] </li>
+                </ul>
+            </section>
+            <section>
+                <ul>
+                    <li class="fragment"> <em>Nash equilibrium</em>: each player's predicted strategy is the
+                        best response to the predicted strategies of other players </li>
+                    <li class="fragment"> In other words, two strategies $s_1$ and $s_2$ are in Nash equilibrium if: </li>
+                    <ul>
+                        <li class="fragment"> under the assumption that agent $i$ plays $s_1$, agent $j$ can do no better than play $s_2$ </li>
+                        <li class="fragment"> AND under the assumption that agent $j$ plays $s_2$, agent $i$ can do no better than play $s_1$ </li>
+                    </ul>
+                </ul>
+            </section>
+            <section>
+                <ul>
+                    <li class="fragment"> Unfortunately there are both games with no Nash equilibrium (zero sum ones)
+                        and with more than one Nash equilibrium (hence no trivial strategy to adopt)</li>
+                    <li class="fragment"> In games where there are common dominant strategies, they represent a Nash equilibrium </li>
+                </ul>
+            </section>
+            <section>
+                <h3> Prisoner's dilemma </h3>
+
+                <ul>
+                    <li class="fragment"> Two men are collectively charged with a crime and held in separate cells, with no way of
+                        meeting or communicating </li>
+                    <li class="fragment"> If one confesses (action: defect) and the other does not (action: coop), the confessor will be
+                        freed, and the other will be jailed for 3 years </li>
+                    <li class="fragment"> If both confess, then each will be jailed for 2 years </li>
+                    <li class="fragment"> If none confess, then each will be jailed for 1 year </li>
+                    <li class="fragment"> We can measure utilities in term of, e.g., years of prison
+                        saved over the case of 4 years of prison </li>
+                </ul>
+            </section>
+            <section>
+                <ul>
+                    <li class="fragment"> [pic FZ MAS 50 (payoff matrix)] </li>
+                </ul>
+            </section>
+            <section>
+                <ul>
+                    <li class="fragment"> The <em>individual rational action</em> is defect: it guarantees a payoff of
+                        no worse than 2, whereas cooperating guarantees a payoff of at most 1 </li>
+                    <li class="fragment"> So defect-defect is the Nash Equilibrium (best strategy): both agents defect, and
+                        get payoff = 2 </li>
+                    <li class="fragment"> But intuition says they should both cooperate and each get payoff of 3! </li>
+                </ul>
+            </section>
+        </section>
+        <section data-transition="convex">
+            <section data-transition="zoom">
+
+                <h2> Game theory: collective stance </h2>
+
+            </section>
+            <section>
+                <h3> Game theory paradox </h3>
+
+                <ul>
+                    <li class="fragment"> This apparent paradox is the fundamental problem
+                        of multi-agent interactions: it <em>appears</em> to imply that cooperation will not occur in
+                        societies of self-interested agents </li>
+                    <li class="fragment"> The prisoner's dilemma is ubiquitous in real-world problems, too! </li>
+                    <li class="fragment"> Can we make agents aware that <em>cooperation</em> is the best strategy? </li>
+                </ul>
+            </section>
+            <section>
+                <h3> Axelrod's tournament </h3>
+
+                <ul>
+                    <li class="fragment"> A possible answer: play the game <em>repeatedly</em> </li>
+                    <li class="fragment"> The incentive to defect evaporates (e.g. due to reputation, fear of retaliation, ...) </li>
+                    <li class="fragment"> Cooperation is the rational choice in the <em>indefinitely</em> repeated prisoner's dilemma </li>
+                </ul>
+            </section>
+            <section>
+                <ul>
+                    <li class="fragment"> Suppose you play iterated prisoner's dilemma against a set of opponents: what
+                        strategy should you choose, so as to maximize your overall (long-term) payoff? </li>
+                    <li class="fragment"> Axelrod (1984) investigated this problem, with a computer tournament for programs
+                        playing the prisoner's dilemma: many different agents using different strategies, interacting hundreds
+                        of times with other agents </li>
+                </ul>
+            </section>
+            <section>
+                <ul>
+                    <li class="fragment"> Strategies: </li>
+                    <ul>
+                        <li class="fragment"> ALLD: "Always defect" (hawk strategy) </li>
+                        <li class="fragment"> TIT-FOR-TAT: on round $t_0$ cooperate, then at each $t_{i \gt 0}$ do what opponent
+                        did on $t_{i-1}$ </li>
+                        <li class="fragment"> TESTER: on 1st round defect, then if opponent retaliated start playing TIT-FOR-TAT,
+                            otherwise intersperse cooperation and defection </li>
+                        <li class="fragment"> JOSS: as TIT-FOR-TAT, but periodically defect </li>
+                    </ul>
+                </ul>
+            </section>
+            <section>
+                <ul>
+                    <li class="fragment"> In the long run, TIT-FOR-TAT is best strategy: cooperation wins! </li>
+                    <li class="fragment"> Emerging "rules": </li>
+                    <ul>
+                        <li class="fragment"> Don’t be envious: don'’'t play as if it were zero sum </li>
+                        <li class="fragment"> Be nice: start by cooperating, and always reciprocate cooperation immediately </li>
+                        <li class="fragment"> Retaliate appropriately: always punish defection immediately, then don't overdue it </li>
+                    </ul>
+                </ul>
+            </section>
+            <section>
+                <h3> Towards multiagent learning </h3>
+
+                <ul>
+                    <li class="fragment"> Axelrod Tournament shows that a group of agents can change behaviour (i.e.,
+                        strategy), to eventually <em>learn</em> what is the most suitable way of behaving to maximize own
+                        success or/while maximize overall success of the group </li>
+                </ul>
+            </section>
+        </section>
+        <section data-transition="convex">
+            <!--<section data-transition="zoom">
+
+                <h3> Multiagent systems </h3>
+
+                <ul>
+                    <li class="fragment"> Autonomous individuals vs. autonomous systems (FZ: slide 20 CAS) </li>
+                    <li class="fragment"> cfr. swarm intelligence (FZ: slide 4 swarm) </li>
+                    <li class="fragment"> AO: slide 52,53 C8 </li>
+                    <li class="fragment"> FZ: NetLogo overview and example (?) </li>
+                </ul>
+
+            </section>-->
+            <section data-transition="zoom">
+
+                <h2> Multiagent interactions </h2>
+
+            </section>
+            <section>
+                <h3> Forms of interaction </h3>
+
+                <ul>
+                    <li class="fragment"> Differently from game theory, let's now assume that agents can interact: </li>
+                    <ul>
+                        <li class="fragment"> <em>Direct</em> interactions: agents directly communicate with each other by exchanging messages </li>
+                        <li class="fragment"> <em>Indirect</em> (or stigmergic) interactions: agents interact indirectly by accessing
+                            an environment in which they situate (physical or computational or mixed) </li>
+                        <li class="fragment"> As they have a mean to affect each other's actions and beliefs, they can strategically act
+                            based on what the other agents do (observation), and agree on common courses of actions </li>
+                    </ul>
+                </ul>
+            </section>
+            <section>
+                <ul>
+                    <li class="fragment"> Interactions may imply: </li>
+                    <ul>
+                        <li class="fragment"> <em>Communication</em>: explicit exchange of beliefs, desires, intentions, ... </li>
+                        <li class="fragment"> <em>Synchronization</em>: ordering of concurrent actions </li>
+                        <li class="fragment"> <em>Coordination</em>: organizing a shared plan of actions </li>
+                    </ul>
+                </ul>
+            </section>
+            <section>
+                <h3> Types of interaction </h3>
+
+                <ul>
+                    <li class="fragment"> <em>Collaborative</em>: agents cooperate towards the achievement of some common
+                        application goals, and trust each other because they know they work towards the same goal </li>
+                    <li class="fragment"> <em>Competitive</em>: agents are forced to interact to achieve individual goals, but
+                        they don't have to trust each other </li>
+                    <li class="fragment"> <em>Collaborative competition</em>: agents compete but for the sake of achieving
+                        some global goal, hence they trust each other </li>
+                </ul>
+            </section>
+            <section>
+                <h3> MAS vs. distributed algorithms </h3>
+
+                <ul>
+                    <li class="fragment"> In distributed algorithms, too, there is need of reaching agreement on how to
+                        act or on a common perspective of the world (leader election, mutual exclusion, validation of a
+                        blockchain transaction, etc.) </li>
+                    <li class="fragment"> However, there is no concept such as "goal", "utility" of actions, etc.: either
+                        the algorithms works, or fails </li>
+                </ul>
+            </section>
+            <section>
+                <h3> Interaction protocol </h3>
+
+                <ul>
+                    <li class="fragment"> Defines the <em>rules</em> of the encounter between agents: the set of available interaction
+                        actions, their dependencies, how they affect the "state of the world", etc. </li>
+                    <li class="fragment"> Direct communication: sequence of messages between agents aimed at discussing
+                        how to reach agreement </li>
+                    <li class="fragment"> Stigmergic interactions: the form and structure of the "signs" in the environment,
+                        how and when agents should leave signs, and how they should react to these </li>
+                    <li class="fragment"> In this context, agents should abide to the "rules of the game", and their
+                        strategy regards freedom in deciding what to do at each step of the protocol (amongst admissible actions) </li>
+                </ul>
+            </section>
+            <section>
+                <ul>
+                    <li class="fragment"> E.g. "battle of the sexes": </li>
+                    <ol>
+                        <li class="fragment"> MAN: "Football!" </li>
+                        <li class="fragment"> WOMAN: "Movie!" </li>
+                        <li class="fragment"> MAN: "This time Football next time Movie" </li>
+                        <li class="fragment"> WOMAN: "No, this time movie and next time Football" </li>
+                        <li class="fragment"> MAN: "No, This time Football next TWO times Movie" </li>
+                        <li class="fragment"> WOMAN: "OK" </li>
+                        <li class="fragment"> MAN: "OK" </li>
+                    </ol>
+                </ul>
+            </section>
+            <section>
+                <h3> Protocol (interaction space) design </h3>
+
+                <ul>
+                    <li class="fragment"> Designing an interaction protocol implies devising a sequence of interaction actions
+                        that has desired properties </li>
+                    <li class="fragment"> E.g. battle of the sexes protocol: </li>
+                    <ol>
+                        <li class="fragment"> MAN: Proposal </li>
+                        <li class="fragment"> WOMAN: Proposal </li>
+                        <li class="fragment"> If action differs: </li>
+                        <ol>
+                            <li class="fragment"> MAN: agree or counter-proposal </li>
+                            <li class="fragment"> WOMAN: agree or counter-proposal </li>
+                        </ol>
+                        <li class="fragment"> While (agree < 2) </li>
+                        <ol>
+                            <li class="fragment"> MAN: agree or counter-proposal with increased WOMAN utility </li>
+                            <li class="fragment"> WOMAN: agree or counter-proposal with increased MAN utility </li>
+                        </ol>
+                    </ol>
+                    <li class="fragment"> Strategy: as soon as the counter-proposal reaches a sufficiently high utility,
+                        agree </li>
+                    <li class="fragment"> <em>Collaborative or competitive?</em> </li>
+                </ul>
+            </section>
+            <section>
+                <h3> Direct interaction: negotiation </h3>
+
+                <ul>
+                    <li class="fragment"> "Negotiation is an economically-inspired form of <em>distributed decision making</em> where two or more
+                        partners jointly search a space of possible solutions to reach a common consensus" (P. Maes) </li>
+                    <ul>
+                        <li class="fragment"> Collaborative --> ContractNet, argumentation </li>
+                        <li class="fragment"> Collaborative --> Auctions </li>
+                    </ul>
+                    <li class> Applications </li>
+                    <uL>
+                        <li class="fragment"> Cellular networks </li>
+                        <li class="fragment"> Manufacturing </li>
+                        <li class="fragment"> Supply chain </li>
+                    </uL>
+                </ul>
+            </section>
+            <section>
+                <h3> ContractNet </h3>
+
+                <ul>
+                    <li class="fragment"> An agent (initiator) needs help from others to carry out a set of tasks (because it cannot
+                        or prefer not to do them itself), hence informs other agents about these tasks (type,
+                        description, requirements, deadline, etc) and asks them to PROPOSE to perform them </li>
+                    <li class="fragment"> Other agents (responders) place "bids" specifying how they would be able to carry out
+                        such task (in what time, with what efficiency and accuracy, etc) </li>
+                    <li class="fragment"> The initiator then assigns each task to the "best" responder (according to
+                        whatever criteria / strategy) </li>
+                </ul>
+            </section>
+            <section>
+                <h3> Auctions </h3>
+
+                <ul>
+                    <li class="fragment"> When agents have competing interests and no interest
+                        in cooperating, the only solution for cooperation is to "pay" the actions/tasks/resources
+                        that agents provide to others </li>
+                    <li class="fragment"> Auctions are the negotiation mechanisms that determines
+                        the <em>values</em> of a good/resource/actions to be "sold" by an
+                        offering (seller) agents to buyer agent(s) </li>
+                </ul>
+            </section>
+            <section>
+                <h3> Indirect (mediated) interaction </h3>
+
+                <ul>
+                    <li class="fragment"> All the form of direct interaction seen can be replicated as indirect ones,
+                    based on some sort of environment mediation </li>
+                    <li class="fragment"> Tuple spaces: shared repositories of data with access mechanisms embedding
+                    synchronisation of interactions </li>
+                    <li class="fragment"> Pheromone-based coordination: inspired by collective behaviour of social insects
+                    such as ants </li>
+                    <li class="fragment"> Field-based coordination: inspired by gravitational waves influencing how
+                    objects behave </li>
+                </ul>
+            </section>
+            <section>
+                <h3> The tuple space model </h3>
+
+                [pic]
+
+            </section>
+        </section>
+        <section>
+            <h3> JADE ContractNet (?) </h3>
+
+
+        </section>
+        <section>
+            <h3> TuCSoN / Tusow (?) </h3>
+
+
+        </section>
+        <section data-transition="fade">
+            <section data-autoslide="2000">
+
+                <br/>
+                <h2> Thanks </h2>
+                <h2> for your attention </h2>
+                <br/>
+                <br/>
+                <h4 class="fragment fade-in-then-semi-out"> Questions? </h4>
+                <p class="fragment"></p>
+                <br/>
+                <p><a href="http://stefanomariani.apice.unibo.it"> Stefano Mariani </a></p>
+                <p><small><em> Università di Modena e Reggio Emilia </em></small></p>
+
+            </section>
+            <!--<section data-autoslide="3000">
+
+                <h3> References </h3>
+
+            </section>-->
+        </section>
+    </div>
+</div>
+
+<script src="js/reveal.js"></script>
+<script src="plugin/math/math.js"></script>
+
+<script>
+    Reveal.initialize({
+        autoSlide: 1000,
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: 120,
+        // Transition style
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+        // Transition speed
+        transitionSpeed: 'default', // default/fast/slow
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'fade', // none/fade/slide/convex/concave/zoom
+        pdfSeparateFragments: false, // http://localhost:63342/reveal.js/?print-pdf/&showNotes=true
+        dependencies: [
+            {src: 'plugin/markdown/marked.js'},
+            {src: 'plugin/markdown/markdown.js'},
+            {src: 'plugin/zoom-js/zoom.js'},
+            {src: 'plugin/notes/notes.js'},
+            //{src: 'plugin/highlight/highlight.js', async: true}
+        ],
+        plugins: [ RevealMath ],
+        slideNumber: true
+    });
+</script>
+
+</body>
+</html>
