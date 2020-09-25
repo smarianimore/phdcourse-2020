@@ -441,12 +441,12 @@
                 <ul>
                     <p> Assume we have: </p>
                     <ul class="fragment">
-                        <li> Agents $Ag = {i, j, ..., k}$ </li>
+                        <li> agents $Ag = {i, j, ..., k}$ </li>
                         <li> each with its own goal $G_{Ag}$ </li>
                         <li> each with its own pool of actions $Ac_{Ag} = {a_{1}, a_{2}, ..., a_{n}}$ </li>
                     </ul>
-                    <li class="fragment"> How should agents decide which action to carry out (their <em>strategy</em>),
-                        assuming they <em>cannot communicate</em>? </li>
+                    <p class="fragment"> How should agents decide which action to carry out (their <em>strategy</em>),
+                        assuming they <strong>cannot communicate</strong>? </p>
                 </ul>
 
             </section>
@@ -458,28 +458,34 @@
 
             </section>
             <section>
+
                 <h3> Game theory </h3>
 
-                <ul>
-                    <li class="fragment"> To reply we need <em>game theory</em>: "analysis of strategies for dealing with
-                        <em>competitive</em> situations where the outcome of a participant's choice of action <em>depends</em>
-                        critically on the actions of other participants" </li>
-                    <li class="fragment"> Notice that agents influence each other even if they do not communicate, as
-                        long as they act within a <em>shared environment</em>! </li>
-                </ul>
+                <p> To reply we need <span class="fragment highlight-green">game theory</span>:</p>
+                <p class="fragment"> <em>"analysis of strategies for dealing with
+                    <strong>competitive</strong> situations where the outcome of a participant's choice of action <strong>depends</strong>
+                    critically on the actions of other participants"</em> </p>
+                <p class="fragment"> Notice that agents influence each other even if they do not communicate, as
+                    long as they act within a <em>shared environment</em>! </p>
+
             </section>
             <section>
+
                 <h3> Rationality </h3>
 
                 <ul>
-                    <li class="fragment"> Agents are <em>rational</em> (remember Newell's principle?): given $Ac$ and $G$ they
-                    will attempt the actions that maximise the possibility to achieve $G$ </li>
-                    <li class="fragment"> To do so they should be able to evaluate the outcome $\omega$ of an action
-                        (e.g. success or failure) and the utility $u$ that such action brings towards achievement of $G$ </li>
-                    <li class="fragment"> The behaviour of rational agents of favouring actions that maximise $u$ is called <em>preference</em> </li>
+                    <p> Agents are <strong>rational</strong> (remember Newell's principle?): </p>
+                    <ul>
+                        <li class="fragment"> given $Ac$ and $G$ they will attempt the actions that maximise the possibility to achieve $G$ </li>
+                        <li class="fragment"> to do so they should be able to evaluate the outcome $\omega$ of an action
+                            (e.g. success or failure) and the <strong>utility</strong> $u$ that such action brings towards achievement of $G$ </li>
+                    </ul>
+                    <p class="fragment"> The behaviour of rational agents of favouring actions that maximise $u$ is called <strong>preference</strong> </p>
                 </ul>
+
             </section>
             <section>
+
                 <ul>
                     <li class="fragment"> <em>Utility functions</em> are used to model preferences: $u_{i} = \Omega \rightarrow \mathbb{R}$ where $\Omega = {\omega_{1}, ..., \omega_{M}}$ </li>
                     <li class="fragment"> Utility functions enable to define <em>preference orderings</em> over outcomes
@@ -487,6 +493,7 @@
                         agents $u$ and preferences may vary</li>
                     <li class="fragment"> [pic FZ MAS 36] </li>
                 </ul>
+
             </section>
             <section>
                 <h3> Multiagent encounters (or, games) </h3>
