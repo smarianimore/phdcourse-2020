@@ -65,66 +65,71 @@
 
                 <h3> On the notion of autonomy </h3>
 
-                <ul>
-                    <li class="fragment"> Why bother? Social pressure: unproductive mind work and non-qualified time
-                        consuming activities might be delegated to artificial systems </li>
-                </ul>
+                <p class="fragment"> <span class="fragment highlight-red"> Why bother? </span> </p>
+                <p class="fragment"> <span class="fragment highlight-green"> Social pressure</span>: unproductive mind work and non-qualified time
+                        consuming activities might be delegated to artificial systems </p>
+
             </section>
             <section>
-                <ul>
-                    <li class="fragment"> Who does what? Mostly, this is no longer an issue: artificial system are
-                        generally very welcome to do whatever we like </li>
-                    <li class="fragment"> Who takes the decision? Autonomy is at least about <em>deliberation</em> as
-                        much as about <em>action</em> </li>
-                    <li class="fragment"> Executive vs. motivational autonomy [Castelfranchi, 1995]: given a goal, the agent is autonomous in
-                        achieving it by itself, vs. the agent’s goals are somehow self-generated, not externally imposed </li>
-                </ul>
+
+                <h3> Issues </h3>
+
+                <p class="fragment"> <span class="fragment highlight-red">Who does what?</span> </p>
+                <p class="fragment"> Mostly, this is no longer an issue: artificial system are
+                    generally very welcome to do whatever we like </p>
+                <p class="fragment"> <span class="fragment highlight-red">Who takes the decision?</span> </p>
+                <p class="fragment"> Autonomy is at least about <strong>deliberation</strong> as
+                    much as about <strong>action</strong> </p>
+                <!--<li class="fragment"> <em>Executive vs. motivational autonomy</em> [Castelfranchi, 1995]: given a <strong>goal</strong>, an
+                    "agent" is autonomous in achieving it by itself, vs. the agent's goals are somehow self-generated, not externally imposed </li>-->
+
             </section>
             <section>
-                <ul>
-                    <li class="fragment"> [pic hype cycles 2018-2020 AO] </li>
-                </ul>
+
+                [pic hype cycles 2018-2020 AO]
+
             </section>
             <section>
+
                 <h3> Research questions </h3>
 
-                <ul>
-                    <li class="fragment"> Is there just one single notion of autonomy? </li>
-                    <li class="fragment"> How do we <em>model</em> autonomy in artificial / computational systems? </li>
-                    <li class="fragment"> How do we <em>engineer</em> autonomy in artificial / computational systems? </li>
-                </ul>
+                <p class="fragment"> Is there just one single notion of <strong>autonomy</strong>? </p>
+                <p class="fragment"> How do we <em>model</em> autonomy in artificial / computational systems? </p>
+                <p class="fragment"> How do we <em>engineer</em> autonomy in artificial / computational systems? </p>
+
             </section>
             <section>
+
                 <h3> Autonomy in context </h3>
 
-                <ul>
-                    <li class="fragment"> According to [Maturana and Varela, 1980], in the domain of systems biology,
-                        autonomous systems acquire the property of specifying their own rules of behaviour, do not work
-                        as mere transducers or functions for converting input instructions into output products, and are
-                        themselves sources of their own activity </li>
-                </ul>
+                <p> According to [Maturana and Varela, 1980]: </p>
+
+                <p> <em>in the domain of systems biology,
+                    autonomous systems acquire the property of specifying their own rules of behaviour, do not work
+                    as mere transducers or functions for converting input instructions into output products, and are
+                    themselves sources of their own activity</em> </p>
+
             </section>
             <section>
-                <ul>
-                    <li class="fragment"> From Unmanned Systems Integrated Roadmap FY 2011-2036: autonomous systems
-                        are self-directed toward a <em>goal</em> in that they do not require outside control, but rather are
-                        governed by laws and strategies that direct their behavior. Initially, these control algorithms
-                        are created and tested by teams of human operators and software developers. However, if <em>machine learning</em>
-                        is utilized, autonomous systems can develop modified strategies for themselves by which
-                        they select their behavior. An autonomous system is self-directed by choosing the behavior it
-                        follows to reach a human-directed goal. </li>
-                </ul>
+
+                <p> From [Unmanned Systems Integrated Roadmap FY 2011-2036]: </p>
+                <p> <em>systems are self-directed toward a <strong>goal</strong> in that they do not require outside control, but rather are
+                    governed by laws and strategies that direct their behavior</em> </p>
+                <p class="fragment"> <em>These control algorithms are created and tested by teams of human operators and
+                    software developers. However, if <em>machine learning</em>
+                    is utilized, autonomous systems can develop modified strategies for themselves by which
+                    they select their behavior</em> </p>
+
             </section>
             <section>
-                <ul>
-                    <li class="fragment"> Various levels of autonomy in any system guide how much and how often
-                        humans need to interact or intervene with the autonomous system: [pic slide 15 C3 AO]</li>
-                </ul>
+
+                <p> Various levels of autonomy in any system guide how much and how often
+                    humans need to interact or intervene with the autonomous system: [pic slide 15 C3 AO]</p>
+
             </section>
             <section>
-                <ul>
-                    <li class="fragment"> Level of <em>automation</em> for cars [SAE J3016, 2018]: [pic slide 21,22 C3 AO] </li>
-                </ul>
+
+                <p> Level of <em>automation</em> for cars [SAE J3016, 2018]: [pic slide 21,22 C3 AO] </p>
 
             </section>
         </section>
@@ -139,164 +144,209 @@
                 <h3> Software engineering perspective </h3>
 
                 <ul>
-                    <li class="fragment"> This is what we learnt an object is: State (instance or state variables) +
-                        Methods (operations). Methods are requested by other objects </li>
-                    <li class="fragment"> Actually, other than state and methods: Internal threads + Event handling +
-                        Messaging + Access to contextual information + ... </li>
-                    <li class="fragment"> Is it still an object? Would you still call a car enriched with a reaction
-                        engine, capable of flying, with an automated pilot, still a car? Or would you rather invent
-                        another name (e.g., "airplane") to refer to it?  </li>
+                    <p> An <strong>object</strong> (e.g. in Java) is: </p>
+                        <small><ul>
+                            <li> state (instance or state variables) </li>
+                            <li> methods (operations) </li>
+                        </ul></small>
+                    <p class="fragment"> Actually, other than state and methods: </p>
+                        <small><ul class="fragment">
+                            <li> internal threads </li>
+                            <li> event handling </li>
+                            <li> messaging </li>
+                            <li> access to contextual information </li>
+                        </ul></small>
+                    <p class="fragment"> <span class="fragment highlight-red">Is it still an object?</span> </p>
                 </ul>
+
             </section>
             <section>
+
                 <ul>
-                    <li class="fragment"> The "grown-up" objects and services of modern adaptive software are: not
-                        purely functional (they do not simply answer to request of services but rather try to achieve an
-                        objective, a goal) + Capable of unsolicited execution (due to internal threads) + Adaptive
-                        (they can dynamically acquire information and tune their behavior accordingly) + Situated
-                        (access to contextual and environmental information) + Social (they interact with each other
-                        either via messaging or via mediated interactions via the environment). This is very close to
-                        the definition of agents... </li>
+                    <p> The "grown-up" objects and services of modern adaptive software are </p>
+                        <small><ul class="fragment">
+                            <li> not purely functional (they do not simply answer to request of services but rather try to achieve an
+                                objective, a goal) </li>
+                            <li> capable of unsolicited execution (due to internal threads) </li>
+                            <li> adaptive (they can dynamically acquire information and tune their behavior accordingly) </li>
+                            <li> <em>situated</em> (access to contextual and environmental information) </li>
+                            <li> <em>social</em> (they interact with each other either via messaging or via mediated
+                                interactions via the environment) </li>
+                        </ul></small>
+                    <p class="fragment"> This is very close to the definition of <span class="fragment highlight-green">agents</span>... </p>
                 </ul>
+
             </section>
             <section>
+
                 <h3> Software agents </h3>
 
-                <ul>
-                    <li class="fragment"> A software agent is a component that is
-                        <ul>
-                            <li class="fragment"> <em>Goal-oriented</em>: designed and deployed to achieve a specific goal (or to perform a specific task) </li>
-                            <li class="fragment"> <em>Autonomous</em>: capable of acting in autonomy towards the achievement of its specific goals, without being
-                                subject to a globally controlled thread of control </li>
-                            <li class="fragment"> <em>Situated</em>: it execute in the context of a specific environment
-                                (computational or physical), and is able act in that environment by sensing and
-                                affecting (via sensors and actuators) </li>
-                            <li class="fragment"> <em>Social</em>. Interact with other agents in a multiagent systems. </li>
-                        </ul>
-                    </li>
-                </ul>
+                <p> Autonomy related to <strong>decision making</strong>: </p>
+                <p class="fragment"> centralised decision making, as in service-oriented and object-based applications, achieves global goal via design by <em>delegation of
+                    control</em> </p>
+                <p class="fragment"> distributed decision making, as in agent-based applications, achieves global goal via
+                    design by <em>delegation of responsibility</em> (<strong>agents can say no</strong>) </p>
+
             </section>
             <section>
+
+                <p> A software agent is a component that is:
+
+                    <small><ul>
+                        <li class="fragment"> <span class="fragment highlight-green">Goal-oriented</span>: designed and deployed to achieve a specific goal (or to perform a specific task) </li>
+                        <li class="fragment"> <span class="fragment highlight-green">Autonomous</span>: capable of acting in autonomy towards the achievement of its specific goals, without being
+                            subject to a globally controlled thread of control </li>
+                        <li class="fragment"> <span class="fragment highlight-green">Situated</span>: executes in the context of a specific environment
+                            (computational or physical), and is able act in that environment by sensing and
+                            affecting (via sensors and actuators) </li>
+                        <li class="fragment"> <span class="fragment highlight-green">Social</span>: can interact with other agents in a multiagent system </li>
+                    </ul></small>
+
+            </section>
+            <section>
+
                 <h3> Autonomy in software agents </h3>
 
-                <ul>
-                    <li class="fragment"> Autonomy related to "decision making": Centralized decision making, as in
-                        service-oriented and object-based applications, achieves global goal via design by delegation of
-                        control vs. Distributed decision making, as in agent-based applications, achieves global goal via
-                        design by delegation of responsibility (<em>agents can say no</em>) </li>
-                    <li class="fragment"> Agents can also decide to autonomously activate towards the pursuing of the
-                        goal, without the need of any specific event or solicitation: <em>proactivity</em> is a sort of extreme expression of
-                        autonomy </li>
-                    <li class="fragment"> Sociality refers to the fact that interactions are more sophisticated than
-                        client-server ones: exchange of knowledge + delegation of tasks + auctions, negotiations +
-                        mediated interactions via common portions of the environment </li>
-                    <li class="fragment"> Castelfranchi vision [AO: slide 26-28 C3] (?) </li>
-                </ul>
+
+                <p> Agents can decide to autonomously activate towards the pursuing of the
+                    goal, without the need of any specific event or solicitation: </p>
+                <p class="fragment"> <strong>proactivity</strong> is a sort of extreme expression of autonomy </p>
+
             </section>
             <section>
-                <ul>
-                    <li class="fragment"> Clearly, it is not always black and white, as modern objects have features
-                        that can make objects resemble agents. In effect, several systems for "agent-oriented
-                        programming" can be considered simply as advanced tools for object-oriented programming
-                        or for more dynamic forms of service-oriented programming </li>
-                </ul>
+
+                <p> Clearly, it is not always black and white, as modern objects have features
+                    that can make objects resemble agents </p>
+                <p> In effect, several systems for "agent-oriented programming" can be considered simply as advanced
+                    tools for object-oriented programming or for more dynamic forms of service-oriented programming </p>
+
             </section>
             <section>
+
                 <h3> Artificial intelligence perspective </h3>
 
-                <ul>
-                    <li class="fragment"> For many researchers, agents do not simply have to be goal-oriented,
-                        autonomous, situated, but they have to be "intelligent", that typically means they have to
-                        integrate "artificial intelligence" tools: Neural networks, Logic-based reasoning, Conversational
-                        capabilities (interact via natural language), ...  </li>
-                    <li class="fragment"> Treating a program as if it is intelligent ("the program <em>wants</em> the input
-                        in a different format") is called the <em>intentional stance</em>, and it'’'s helpful to us as programmers
-                        to think this way </li>
-                    <li class="fragment"> The intentional stance leads us to program agents at the knowledge level (Newell),
-                        that means reasoning about programs in terms of: Facts and Beliefs (rather than variables and data) +
-                        Goals and behaviors (rather than functionalities and methods) + Desires / preferences. </li>
-                </ul>
+                <p> For many researchers, agents do not simply have to be goal-oriented,
+                    autonomous, situated, but they have to be <em>"intelligent"</em>, that typically means they have to
+                    integrate "artificial intelligence" tools: neural networks, logic-based reasoning, conversational
+                    capabilities (interact via natural language), ...  </p>
+
             </section>
             <section>
+
+                <p> Treating a program as if it is intelligent ("the program <em>wants</em> the input
+                    in a different format") is called the <strong>intentional stance</strong>, and it's helpful to us as programmers
+                    to think this way </p>
+                <p class="fragment"> The intentional stance leads us to program agents at the knowledge level (Newell),
+                    that means reasoning about programs in terms of: </p>
+                <small><ul class="fragment">
+                    <li> facts and <strong>beliefs</strong> (rather than variables and data) </li>
+                    <li> goals and <strong>intentions</strong> (rather than functionalities and methods) </li>
+                    <li> <strong>desires</strong> and preferences </li>
+                </ul></small>
+
+            </section>
+            <section>
+
+                <p> A possible definition of intelligence is: </p>
+                <p class="fragment"> <em>"the capability to act purposefully towards the achievement of goals"</em> </p>
+                <p class="fragment"> Hence for an agent to <em>be regarded (observed) as</em> being intelligent it is enough
+                    simply to know how to achieve a given goal, which implies some sort of <strong>reasoning</strong> </p>
+
+            </section>
+            <section>
+
                 <ul>
-                    <li class="fragment"> A possible definition of <em>intelligence</em> is "the capability to act purposefully
-                        towards the achievement of goals" </li>
-                    <li class="fragment"> Hence for an agent to be regarded (observed) as being intelligent it is enough
-                        simply to know how to achieve a given goal, which implies some sort of <em>reasoning</em> </li>
-                    <li class="fragment"> E.g. a "smart" thermostat: </li>
+                    <p> E.g. a "smart" thermostat: </p>
                     <ul>
-                        <li class="fragment"> Goal: keep temp at 27° </li>
-                        <li class="fragment"> Percept: temp </li>
-                        <li class="fragment"> Actions: + / - temp </li>
-                        <li class="fragment"> Reasoning: <bold>if</bold> temp < 27 <bold>then</bold> + <bold>else</bold> if temp < 27 <bold>then</bold> - </li>
+                        <li class="fragment"> Goal: keep temperature at 27° </li>
+                        <li class="fragment"> Percept: temperature </li>
+                        <li class="fragment"> Actions: increase / decrease temperature </li>
+                        <li class="fragment"> Reasoning: <span><pre><code data-trim>
+    if temp < 27:
+        temp.increase()
+    else if temp > 27:
+        temp.decrease()
+                            </code></pre></span></li>
                     </ul>
+                    <p class="fragment"> Too simplistic, too low level of abstraction </p>
                 </ul>
+
             </section>
             <section>
+
                 <ul>
-                    <li class="fragment"> Too simplistic, too low level of abstraction </li>
-                    <li class="fragment"> Imagine a self-driving car: </li>
+                    <p> Imagine a self-driving car: </p>
                     <ul>
                         <li class="fragment"> Goal: don't kill pedestrians </li>
-                        <li class="fragment"> Percept: current "situation" (where are pedestrians, other cars, weather conditions, ...) </li>
+                        <li class="fragment"> Percept: current <em>situation</em> (where are pedestrians, other cars, weather conditions, ...) </li>
                         <li class="fragment"> Actions: gas, brake, steer, ... </li>
-                        <li class="fragment"> Reasoning: still if-then-else?? </li>
+                        <li class="fragment"> <span class="fragment highlight-red">Reasoning</span>: still if-then-else?? </li>
                     </ul>
-                    <li class="fragment"> Obviously not: <em>theoretical</em> + <em>practical reasoning</em> </li>
+                    <p class="fragment"> Obviously not: <strong>theoretical</strong> + <strong>practical reasoning</strong> </p>
                 </ul>
+
             </section>
             <section>
+
                 <h3> Intelligence as "observing reasoning" </h3>
 
                 <ul>
-                    <li class="fragment"> Theoretical reasoning: a process which affects beliefs, to expand / improve
+                    <li class="fragment"> <span class="fragment highlight-green">Theoretical reasoning</span>: a process which affects <strong>beliefs</strong>, to expand / improve
                         knowledge about what's happening (<em>inference</em>) </li>
-                    <li class="fragment"> Practical reasoning: weigthing conflicting considerations for and against
-                        competing options, given what the agent desires and it believes (<em>decision making</em>) </li>
-                    <ul>
-                        <li class="fragment"> <em>Deliberation</em>: decision about what goal to pursue (adopting <em>intentions</em>) </li>
-                        <li class="fragment"> <em>Means-ends reasoning</em>: decision about how to achieve goal (carry out actions) </li>
-                    </ul>
-                    <li class="fragment"> BDI architecture has both goals (as special beliefs called desires) and intentions
-                        (as sequence of action called plans, either hard-coded or automatically built) </li>
+                    <li class="fragment"> <span class="fragment highlight-green">Practical reasoning</span>: weighing conflicting considerations for and against
+                        competing options, given what the agent <strong>desires</strong> and it believes (<em>decision making</em>) </li>
+                    <small><ul>
+                        <li class="fragment"> <strong>Deliberation</strong>: decision about what goal to pursue (adopting <em>intentions</em>) </li>
+                        <li class="fragment"> <strong>Means-ends reasoning</strong>: decision about how to achieve goal (carry out actions) </li>
+                    </ul></small>
                 </ul>
+
             </section>
             <section>
+
                 <h3> On rationality </h3>
 
-                <ul>
-                    <li class="fragment"> Newell's Principle of <em>Rationality</em>: If an agent has the knowledge that an action will
-                        lead to the accomplishment of one of its goals (or to the maximization of its utility), then it will
-                        select that action (Game Theory and Decision Theory) </li>
-                    <li class="fragment"> BDI is a very successful and general model to "think" at software agents: the agent has
-                        Beliefs (what it knows about the world), Desires (what it desires to happen), Intentions (what it
-                        wants to do to satisfy its desires) </li>
-                </ul>
+                <p> Newell's Principle of <span class="fragment highlight-green">rationality</span>: </p>
+                <p class="fragment"> if an agent has the knowledge that an action will
+                    lead to the accomplishment of one of its goals (or to the maximization of its <span class="fragment highlight-green">utility</span>), then it will
+                    select that action (<strong>Game Theory</strong> and <strong>Decision Theory</strong>) </p>
+
             </section>
             <section>
-                <h3> Agent architectures </h3>
 
                 <ul>
-                    <li class="fragment"> What types of architectures can we
-                        conceive for agents [pics FZ 36-46]?
+                    <p> <strong>BDI</strong> is a very successful and general model to "think" at software agents: </p>
+                    <p class="fragment"> The agent has: </p>
                         <ul>
-                            <li class="fragment"> <em>Reactive</em> (or tropistic): "if-then-else" behaviour, simple and efficient, not very expressive, no real autonomy (agents act solely upon external stimuli) </li>
-                            <li class="fragment"> Reactive with <em>State</em> (hysteretic): tracking the state of the world enables the agent to act in context, e.g. different actions with same stimulus </li>
-                            <li class="fragment"> <em>Goal-oriented</em>: the agent plans its actions towards achievement of a desired state [image slide 29] </li>
-                            <li class="fragment"> <em>Utility-oriented</em>: the agent aims at maximising a function of some parameter measuring what it gains from a given state [image slide 31] </li>
+                            <li class="fragment"> Beliefs (what it knows about the world) </li>
+                            <li class="fragment"> Desires (what it desires to happen) </li>
+                            <li class="fragment"> Intentions (what it wants to do to satisfy its desires) </li>
                         </ul>
-                    </li>
                 </ul>
+
             </section>
             <section>
-                <ul>
-                    <li class="fragment"> JADE example ? </li>
-                </ul>
+
+                <h3> Agent architectures </h3>
+
+                <p> What types of architectures can we conceive for agents [pics FZ 36-46]? </p>
+                <small><ul>
+                    <li class="fragment"> <strong>Reactive</strong> (or tropistic): "if-then-else" behaviour, simple and efficient, not very expressive, no real autonomy (agents act solely upon external stimuli) </li>
+                    <li class="fragment"> Reactive with <strong>State</strong> (hysteretic): tracking the state of the world enables the agent to act in context, e.g. different actions with same stimulus </li>
+                    <li class="fragment"> <strong>Goal-oriented</strong>: the agent plans its actions towards achievement of a desired state [image slide 29] </li>
+                    <li class="fragment"> <strong>Utility-oriented</strong>: the agent aims at maximising a function of some parameter measuring what it gains from a given state [image slide 31] </li>
+                </ul></small>
+                </p>
+
             </section>
             <section>
-                <ul>
-                    <li class="fragment"> Jason example ? </li>
-                </ul>
+
+                <p> JADE example ? </p>
+
+            </section>
+            <section>
+
+                <p> Jason example ? </p>
 
             </section>
         </section>
@@ -310,85 +360,95 @@
 
                 <h3> Systems of agents </h3>
 
-                <ul>
-                    <li class="fragment"> Multiagent Systems (MAS): Systems or "organizations" of <em>interacting</em> autonomous
-                        agents, possibly distributed over multiple computers and/or in an environment, possibly belonging
-                        to different stakeholders / organization (federated / open systems), collaborating and/or competing
-                        to, respectively, achieve a shared global goal or maximise their own utility, possibly interacting
-                        with a computational or physical environment (that could also mediate interactions) </li>
-                </ul>
+                <p> Multiagent Systems (MAS): </p>
+                <p class="fragment"> systems or "organizations" of <em>interacting</em> autonomous
+                    agents, possibly <em>distributed</em> over multiple computers and/or in an environment, possibly belonging
+                    to different stakeholders / organization (federated / open systems), collaborating and/or competing
+                    to, respectively, achieve a shared global goal or maximise their own utility, possibly <span class="fragment highlight-green">interacting</span>
+                    with a computational or physical <span class="fragment highlight-green">environment</span> (that could also mediate interactions) </p>
 
             </section>
             <section>
 
                 <h3> Why? </h3>
 
-                <ul>
+                <small><ul>
                     <li class="fragment"> A single agent has finite rationality, that is, a limit on the amount of knowledge he can rationally
                         handle in a given time </li>
                     <li class="fragment"> Distribution: several problems are intrinsically distributed, in that knowledge
-                        can be acquired only locally </li>
-                    <li class="fragment"> Interactions between personal agents: many problems requires components of different
+                        can be acquired only <em>locally</em> </li>
+                    <li class="fragment"> Interactions between <em>personal agents</em>: many problems requires components of different
                         stakeholders / organizations to interact, so the problem is intrinsically composed of multiple agents </li>
                     <li class="fragment"> Modelling for real-world organizations: software systems devoted to support the work of
                         some human organization should somehow "mimic" the structure of the real-world organizations </li>
-                    <li class="fragment"> Multiagent systems are "paradigmatic" of modern distributed systems: made up of
-                        decentralized autonomous components (sensors, peers, mobile devices, etc.) interacting with each
-                        other in complex way (P2P networks, MANETs, pervasive computing environments) and situated in
-                        some environment, computational or physical </li>
-                </ul>
+                </ul></small>
+
             </section>
             <section>
+
+                <p> MAS are "paradigmatic" of modern distributed systems: </p>
+                <p class="fragment"> made up of decentralized <strong>autonomous</strong> components (sensors, peers, mobile devices, etc.) <strong>interacting</strong> with each
+                    other in complex ways (P2P networks, MANETs, pervasive computing environments) and <strong>situated</strong> in
+                some environment, computational or physical </p>
+
+            </section>
+            <section>
+
                 <h3> Applications </h3>
 
                 <ul>
-                    <li class="fragment"> Trading and e-commerce: auctions, stock market, b2b, ... </li>
-                    <li class="fragment"> Control of physical Processes: manufacturing pipeline, home/office automation, traffic control, ... </li>
-                    <li class="fragment"> Shared resources management: cellular networks, power grid, computing, ... </li>
-                    <li class="fragment"> Workflow Management: scientific research, administrative work, ... </li>
-                    <li class="fragment"> Simulation of complex processes: biological systems, social sciences, games, ... </li>
-                    <li class="fragment"> Optimization: any operational research domain, such as logistics, transportation, ... </li>
+                    <li> Trading and e-commerce: auctions, stock market, b2b, ... </li>
+                    <li> Control of physical Processes: manufacturing pipeline, home/office automation, traffic control, ... </li>
+                    <li> Shared resources management: cellular networks, power grid, computing, ... </li>
+                    <li> Workflow Management: scientific research, administrative work, ... </li>
+                    <li> Simulation of complex processes: biological systems, social sciences, games, ... </li>
+                    <li> Optimization: any operational research domain, such as logistics, transportation, ... </li>
                 </ul>
+
             </section>
             <section>
                 <h3> Software engineering perspective </h3>
 
                 <ul>
-                    <li class="fragment"> In a multiagent systems, agent participate by providing the capability of
-                        achieving a goal in autonomy (vs. objects/services offering interfaces) </li>
-                    <li class="fragment"> The execution of an agent is autonomous, subject to its own internal decision (vs. objects/services being invoked) </li>
-                    <li class="fragment"> Agents interact in many complex ways, such as negotiation, auction, stigmergy, ... (vs. objects/services request/response) </li>
-                    <li class="fragment"> Agents interact because it is beneficial to themselves or the system (vs. objects/service are obligated to) </li>
+                    <p> In a MAS, agents participate by providing the capability of
+                        achieving a goal in autonomy (vs. objects/services offering interfaces) </p>
+                    <li class="fragment"> the execution of an agent is autonomous, subject to its own internal decision (vs. objects/services being invoked) </li>
+                    <li class="fragment"> agents interact in many complex ways, such as negotiation, auction, stigmergy, ... (vs. objects/services request/response) </li>
+                    <li class="fragment"> agents interact because it is beneficial to themselves or the system (vs. objects/service are obligated to) </li>
                 </ul>
+
             </section>
             <section>
+
                 <h3> Artificial intelligence perspective </h3>
 
                 <ul>
-                    <li class="fragment"> Different agents may have either conflicting goals, or individual goals contributing
+                    <li> Different agents may have either conflicting goals, or individual goals contributing
                     to a systemic one, or a shared goal </li>
                     <li class="fragment"> In any case, the actions of an agent may influence other agents possibility of achieving their own goal </li>
                     <li class="fragment"> <em>Distributed decision making</em>: </li>
-                    <ul>
-                        <li class="fragment"> strategy: how to behave taking into account what others could do? (competition, cooperation, ...) </li>
-                        <li class="fragment"> protocol: what means to use to interact? (negotiation, argumentation, stigmergy, ...) </li>
-                        <li class="fragment"> emergence: which global properties may arise from agents' individual behaviour? (equilibrium, self-organisation, <div class="."></div>) </li>
-                    </ul>
+                    <small><ul class="fragment">
+                        <li> <span class="fragment highlight-green">strategy</span>: how to behave taking into account what others could do? (competition, cooperation, ...) </li>
+                        <li> <span class="fragment highlight-green">protocol</span>: what means to use to interact? (negotiation, argumentation, stigmergy, ...) </li>
+                    </ul></small>
                 </ul>
+
             </section>
             <section>
+
                 <h3> Strategic thinking </h3>
 
                 <ul>
-                    <li class="fragment"> Assume we have: </li>
-                    <ul>
-                        <li class="fragment"> Agents $Ag = {i, j, ..., k}$ </li>
-                        <li class="fragment"> each with its own goal $G_{Ag}$ </li>
-                        <li class="fragment"> each with its own pool of actions $Ac_{Ag} = {a_{1}, a_{2}, ..., a_{n}}$ </li>
+                    <p> Assume we have: </p>
+                    <ul class="fragment">
+                        <li> Agents $Ag = {i, j, ..., k}$ </li>
+                        <li> each with its own goal $G_{Ag}$ </li>
+                        <li> each with its own pool of actions $Ac_{Ag} = {a_{1}, a_{2}, ..., a_{n}}$ </li>
                     </ul>
                     <li class="fragment"> How should agents decide which action to carry out (their <em>strategy</em>),
                         assuming they <em>cannot communicate</em>? </li>
                 </ul>
+
             </section>
         </section>
         <section data-transition="convex">
