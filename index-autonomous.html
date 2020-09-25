@@ -93,7 +93,7 @@
 
                 <h3> Research questions </h3>
 
-                <p class="fragment"> Is there just one single notion of <strong>autonomy</strong>? </p>
+                <p class="fragment"> Is there just one single notion of <span class="fragment highlight-green">autonomy</span>? </p>
                 <p class="fragment"> How do we <em>model</em> autonomy in artificial / computational systems? </p>
                 <p class="fragment"> How do we <em>engineer</em> autonomy in artificial / computational systems? </p>
 
@@ -169,8 +169,8 @@
                                 objective, a goal) </li>
                             <li> capable of unsolicited execution (due to internal threads) </li>
                             <li> adaptive (they can dynamically acquire information and tune their behavior accordingly) </li>
-                            <li> <em>situated</em> (access to contextual and environmental information) </li>
-                            <li> <em>social</em> (they interact with each other either via messaging or via mediated
+                            <li> <strong>situated</strong> (access to contextual and environmental information) </li>
+                            <li> <strong>social</strong> (they interact with each other either via messaging or via mediated
                                 interactions via the environment) </li>
                         </ul></small>
                     <p class="fragment"> This is very close to the definition of <span class="fragment highlight-green">agents</span>... </p>
@@ -181,10 +181,10 @@
 
                 <h3> Software agents </h3>
 
-                <p> Autonomy related to <strong>decision making</strong>: </p>
-                <p class="fragment"> centralised decision making, as in service-oriented and object-based applications, achieves global goal via design by <em>delegation of
+                <p> Autonomy related to <span class="fragment highlight-green">decision making</span>: </p>
+                <p class="fragment"> <strong>centralised</strong> decision making, as in service-oriented and object-based applications, achieves global goal via design by <em>delegation of
                     control</em> </p>
-                <p class="fragment"> distributed decision making, as in agent-based applications, achieves global goal via
+                <p class="fragment"> <strong>distributed</strong> decision making, as in agent-based applications, achieves global goal via
                     design by <em>delegation of responsibility</em> (<strong>agents can say no</strong>) </p>
 
             </section>
@@ -226,7 +226,7 @@
                 <h3> Artificial intelligence perspective </h3>
 
                 <p> For many researchers, agents do not simply have to be goal-oriented,
-                    autonomous, situated, but they have to be <em>"intelligent"</em>, that typically means they have to
+                    autonomous, situated, but they have to be <strong>"intelligent"</strong>, that typically means they have to
                     integrate "artificial intelligence" tools: neural networks, logic-based reasoning, conversational
                     capabilities (interact via natural language), ...  </p>
 
@@ -239,9 +239,9 @@
                 <p class="fragment"> The intentional stance leads us to program agents at the knowledge level (Newell),
                     that means reasoning about programs in terms of: </p>
                 <small><ul class="fragment">
-                    <li> facts and <strong>beliefs</strong> (rather than variables and data) </li>
-                    <li> goals and <strong>intentions</strong> (rather than functionalities and methods) </li>
-                    <li> <strong>desires</strong> and preferences </li>
+                    <li> facts and beliefs (rather than variables and data) </li>
+                    <li> goals and intentions (rather than functionalities and methods) </li>
+                    <li> desires and preferences (rather than external control) </li>
                 </ul></small>
 
             </section>
@@ -309,7 +309,7 @@
                 <p> Newell's Principle of <span class="fragment highlight-green">rationality</span>: </p>
                 <p class="fragment"> if an agent has the knowledge that an action will
                     lead to the accomplishment of one of its goals (or to the maximization of its <span class="fragment highlight-green">utility</span>), then it will
-                    select that action (<strong>Game Theory</strong> and <strong>Decision Theory</strong>) </p>
+                    select that action (<strong>Game Theory</strong> / <strong>Decision Theory</strong>) </p>
 
             </section>
             <section>
@@ -318,9 +318,9 @@
                     <p> <strong>BDI</strong> is a very successful and general model to "think" at software agents: </p>
                     <p class="fragment"> The agent has: </p>
                         <ul>
-                            <li class="fragment"> Beliefs (what it knows about the world) </li>
-                            <li class="fragment"> Desires (what it desires to happen) </li>
-                            <li class="fragment"> Intentions (what it wants to do to satisfy its desires) </li>
+                            <li class="fragment"> <span class="fragment highlight-green">Beliefs</span> (what it knows about the world) </li>
+                            <li class="fragment"> <span class="fragment highlight-green">Desires</span> (what it desires to happen) </li>
+                            <li class="fragment"> <span class="fragment highlight-green">Intentions</span> (what it wants to do to satisfy its desires) </li>
                         </ul>
                 </ul>
 
@@ -361,8 +361,8 @@
                 <h3> Systems of agents </h3>
 
                 <p> Multiagent Systems (MAS): </p>
-                <p class="fragment"> systems or "organizations" of <em>interacting</em> autonomous
-                    agents, possibly <em>distributed</em> over multiple computers and/or in an environment, possibly belonging
+                <p class="fragment"> systems or "organizations" of autonomous
+                    agents, possibly <strong>distributed</strong> over multiple computers and/or in an environment, possibly belonging
                     to different stakeholders / organization (federated / open systems), collaborating and/or competing
                     to, respectively, achieve a shared global goal or maximise their own utility, possibly <span class="fragment highlight-green">interacting</span>
                     with a computational or physical <span class="fragment highlight-green">environment</span> (that could also mediate interactions) </p>
@@ -396,14 +396,14 @@
 
                 <h3> Applications </h3>
 
-                <ul>
+                <small><ul>
                     <li> Trading and e-commerce: auctions, stock market, b2b, ... </li>
                     <li> Control of physical Processes: manufacturing pipeline, home/office automation, traffic control, ... </li>
                     <li> Shared resources management: cellular networks, power grid, computing, ... </li>
                     <li> Workflow Management: scientific research, administrative work, ... </li>
                     <li> Simulation of complex processes: biological systems, social sciences, games, ... </li>
                     <li> Optimization: any operational research domain, such as logistics, transportation, ... </li>
-                </ul>
+                </ul></small>
 
             </section>
             <section>
@@ -412,9 +412,11 @@
                 <ul>
                     <p> In a MAS, agents participate by providing the capability of
                         achieving a goal in autonomy (vs. objects/services offering interfaces) </p>
-                    <li class="fragment"> the execution of an agent is autonomous, subject to its own internal decision (vs. objects/services being invoked) </li>
-                    <li class="fragment"> agents interact in many complex ways, such as negotiation, auction, stigmergy, ... (vs. objects/services request/response) </li>
-                    <li class="fragment"> agents interact because it is beneficial to themselves or the system (vs. objects/service are obligated to) </li>
+                    <small><ul>
+                        <li class="fragment"> the execution of an agent is autonomous, subject to its own internal decision (vs. objects/services being invoked) </li>
+                        <li class="fragment"> agents interact in many complex ways, such as negotiation, auction, stigmergy, ... (vs. objects/services request/response) </li>
+                        <li class="fragment"> agents interact because it is beneficial to themselves or the system (vs. objects/service are obligated to) </li>
+                    </ul></small>
                 </ul>
 
             </section>
@@ -478,7 +480,7 @@
                     <ul>
                         <li class="fragment"> given $Ac$ and $G$ they will attempt the actions that maximise the possibility to achieve $G$ </li>
                         <li class="fragment"> to do so they should be able to evaluate the outcome $\omega$ of an action
-                            (e.g. success or failure) and the <strong>utility</strong> $u$ that such action brings towards achievement of $G$ </li>
+                            (e.g. success or failure) and the <span class="fragment highlight-green">utility</span> $u$ that such action brings towards achievement of $G$ </li>
                     </ul>
                     <p class="fragment"> The behaviour of rational agents of favouring actions that maximise $u$ is called <strong>preference</strong> </p>
                 </ul>
@@ -487,43 +489,51 @@
             <section>
 
                 <ul>
-                    <li class="fragment"> <em>Utility functions</em> are used to model preferences: $u_{i} = \Omega \rightarrow \mathbb{R}$ where $\Omega = {\omega_{1}, ..., \omega_{M}}$ </li>
-                    <li class="fragment"> Utility functions enable to define <em>preference orderings</em> over outcomes
-                        (hence, actions): $\omega >=_i \omega'$ means $u_i(\omega) >= u_i(\omega')$ as for different
-                        agents $u$ and preferences may vary</li>
-                    <li class="fragment"> [pic FZ MAS 36] </li>
+                    <p> <strong>Utility functions</strong> are used to model preferences: $$u_{i} = \Omega \rightarrow \mathbb{R} \; \text{where} \; \Omega = {\omega_{1}, ..., \omega_{M}}$$ </p>
+                    <p> Utility functions enable to define <em>preference orderings</em> over outcomes
+                        (hence, actions): $$\omega >=_i \omega' \; \text{means} \; u_i(\omega) >= u_i(\omega')$$ as for different
+                        agents $u$ and preferences may vary </p>
                 </ul>
 
             </section>
             <section>
+
+                <p> [pic FZ MAS 36] </p>
+
+            </section>
+            <section>
+
                 <h3> Multiagent encounters (or, games) </h3>
 
-                <ul>
-                    <li class="fragment"> If multiple agents either act (almost) simultaneously or do not have means to
+                <p> If multiple agents either act (almost) simultaneously or do not have means to
                         observe each other actions, the outcome of their behaviours will be some combination of each
-                        individual outcome </li>
-                    <li class="fragment"> A <em>state transformer function</em> models such combined outcome on the shared environment: $\tau = Ac_i \times Ac_j \times... \rightarrow \Omega$ </li>
-                </ul>
+                        individual outcome </p>
+                <p class="fragment"> A <em>state transformer function</em> models such combined outcome on the shared environment: $$\tau = Ac_i \times Ac_j \times... \rightarrow \Omega$$ </p>
+
             </section>
             <section>
+
                 <ul>
-                    <li class="fragment"> E.g. considering both agents $i$ and $j$ to only have actions $a_1$ and $a_2$ available ($\tau(Ac_{i} = {a_1, a_2}, Ac_{j} = {a_1, a_2}$): </li>
-                    <ol>
+                    <p> E.g. considering both agents $i$ and $j$ to only have actions $a_1$ and $a_2$ available $$\tau(Ac_{i} = {a_1, a_2}, Ac_{j} = {a_1, a_2})$$ </p>
+                    <small><ol>
                         <li class="fragment"> if $\tau(a_2,a_2) = \omega_1$ and $\tau(a_2,a_1) = \omega_2$ and $\tau(a_1,a_2) = \omega_3$ and $\tau(a_1,a_1) = \omega_4$ then the environment is sensitive to both agents </li>
                         <li class="fragment"> if $\tau(a_2,a_2) = \omega_1$ and $\tau(a_2,a_1) = \omega_1$ and $\tau(a_1,a_2) = \omega_1$ and $\tau(a_1,a_1) = \omega_1$ then the environment is sensitive to none </li>
                         <li class="fragment"> if $\tau(a_2,a_2) = \omega_1$ and $\tau(a_2,a_1) = \omega_2$ and $\tau(a_1,a_2) = \omega_1$ and $\tau(a_1,a_1) = \omega_2$ then the environment is sensitive only to agent $j$ </li>
-                    </ol>
+                    </ol></small>
                 </ul>
+
             </section>
             <section>
+
                 <ul>
-                    <li class="fragment"> Such state transformer functions let us find preferences, hence define a rational choice </li>
-                    <li class="fragment"> Suppose to be in case 1 from previous examples, with utility functions:
+                    <p> Such state transformer functions let us find <strong>preferences</strong>, hence define a <span class="fragment highlight-green">rational choice</span> </p>
+                    <small><p class="fragment"> Suppose to be in case 1 from previous examples, with utility functions:
                         $$u_i(\omega_1) = 1, u_i(\omega_2) = 1, u_i(\omega_3) = 4, u_i(\omega_4) = 4$$
-                        $$u_j(\omega_1) = 1, u_i(\omega_2) = 4, u_i(\omega_3) = 1, u_i(\omega_4) = 4$$ </li>
-                    <li class="fragment"> Then, agent $i$ preferences are: $( (a_1,a_1) \geq_i (a_1,a_2) ) \gt_i ( (a_2,a_1) \geq_i (a_2,a_2) )$ </li>
-                    <li class="fragment"> Thus, agent $i$ rational choice is $a_1$: every outcome where it does $a_1$ are better than those where he chooses $a_2$, <em>independently</em> of what $j$ does </li>
+                        $$u_j(\omega_1) = 1, u_i(\omega_2) = 4, u_i(\omega_3) = 1, u_i(\omega_4) = 4$$ </p>
+                    <p class="fragment"> Then, agent $i$ preferences are: $( (a_1,a_1) \geq_i (a_1,a_2) ) \gt_i ( (a_2,a_1) \geq_i (a_2,a_2) )$ </p>
+                    <p class="fragment"> Thus, agent $i$ rational choice is $a_1$: every outcome where it does $a_1$ are better than those where he chooses $a_2$, <em>independently</em> of what $j$ does </p></small>
                 </ul>
+
             </section>
             <section>
                 <h3> Dominant strategies </h3>
