@@ -80,16 +80,12 @@
             <section>
 
                 <img class="stretch" data-src="gartner-2019.png" style="text-align: left; float: left;">
-                <div style="text-align: right; float: right;">
-                    <li class="fragment">bla</li>
-                    <li class="fragment">bla</li>
-                    <li class="fragment">bla</li>
-                    <!--<ul>
-                        <li class="fragment"> Autonomous driving </li>
-                        <li class="fragment"> Decentralized Autonomous Organizations (DAOs) </li>
-                        <li class="fragment"> Autonomous examination of data </li>
-                    </ul>-->
-                </div>
+                <br />
+                <p style="text-align: right; float: right;">
+                    <li class="fragment"> Autonomous driving </li>
+                    <li class="fragment"> Decentralized Autonomous Organizations (DAOs) </li>
+                    <li class="fragment"> Autonomous examination of data (advanced AI) </li>
+                </p>
 
             </section>
             <section>
@@ -122,7 +118,7 @@
 
                 <h3> Autonomy in context </h3>
 
-                <p> From [Unmanned Systems Integrated Roadmap FY 2011-2036]: </p>
+                <p> From <a href="https://fas.org/irp/program/collect/usroadmap2011.pdf">[Unmanned Systems Integrated Roadmap FY 2011-2036]</a>: </p>
                 <p> <em>Systems are self-directed toward a <span class="fragment highlight-green">goal</span> in that they do not require outside control, but rather are
                     governed by laws and strategies that direct their behavior</em> </p>
                 <p class="fragment"> <em>These control algorithms are created and tested by teams of human operators and
@@ -133,13 +129,21 @@
             </section>
             <section>
 
-                <p> Various levels of autonomy in any system guide how much and how often
-                    humans need to interact or intervene with the autonomous system: [pic slide 15 C3 AO]</p>
+                <p> Various <strong>levels of autonomy</strong> in any system guide how much and how often
+                    humans need to <em>interact or intervene</em> with the autonomous system:</p>
+                <img class="stretch" data-src="unmanned-systems.png">
 
             </section>
             <section>
 
-                <p> Level of <em>automation</em> for cars [SAE J3016, 2018]: [pic slide 21,22 C3 AO] </p>
+                <p> Level of <em>automation</em> for cars from <a href="https://www.sae.org/standards/content/j3016_201806/">[SAE J3016, 2018]</a>: </p>
+                <img class="stretch" data-src="SAE-1.png">
+                <small><p> ADS: automated driving system, <strong>DDT: dynamic driving task</strong>, ODD: operational design domain, <strong>OEDR: object and event detection and response</strong> </p></small>
+
+            </section>
+            <section>
+
+                <img class="stretch" data-src="SAE-2.png">
 
             </section>
         </section>
@@ -340,7 +344,7 @@
 
                 <h3> Agent architectures </h3>
 
-                <p> What types of architectures can we conceive for agents [pics FZ 36-46]? </p>
+                <p> What types of architectures can we conceive for agents </p>
                 <small><ul class="fragment">
                     <li> <strong>Reactive</strong> (or tropistic): "if-then-else" behaviour, simple and efficient, not very expressive, no real autonomy (agents act solely upon external stimuli) </li>
                     <li> Reactive with State (hysteretic): tracking the state of the world enables the agent to act in context, e.g. different actions with same stimulus </li>
@@ -348,6 +352,26 @@
                     <li> <strong>Utility-oriented</strong>: the agent aims at maximising a function of some parameter measuring what it gains from a given state [image slide 31] </li>
                 </ul></small>
                 </p>
+
+            </section>
+            <section>
+
+                <img class="stretch" data-src="reactive.png">
+
+            </section>
+            <section>
+
+                <img class="stretch" data-src="with-state.png">
+
+            </section>
+            <section>
+
+                <img class="stretch" data-src="goal.png">
+
+            </section>
+            <section>
+
+                <img class="stretch" data-src="utility.png">
 
             </section>
             <section>
@@ -510,7 +534,7 @@
             </section>
             <section>
 
-                <p> [pic FZ MAS 36] </p>
+                <img class="stretch" data-src="utility-curve.png">
 
             </section>
             <section>
@@ -568,7 +592,13 @@
                 <p> In <strong>zero-sum</strong> games the utilities add up to $0$: $$u_i(\omega) + u_j(\omega) = 0 \; \forall \omega \in \Omega$$ </p>
                 <p class="fragment"> Zero-sum games are <em>strictly competitive</em>: no agent can gain something if no other loses something (every win-lose game basically) </p>
                 <p class="fragment"> <em>In these games there is no rational choice without information about other players' strategies!</em> </p>
-                <p class="fragment"> [pic FZ MAS 44] </p>
+
+            </section>
+            <section>
+
+                <h3> Rock-paper-scissors </h3>
+
+                <img data-src="zero-sum.png">
 
             </section>
             <section>
@@ -619,7 +649,9 @@
             </section>
             <section>
 
-                <p> [pic FZ MAS 50 (payoff matrix)] </p>
+                <h3> Prisoners' payoff matrix </h3>
+
+                <img data-src="prisoner.png">
 
             </section>
             <section>
@@ -914,12 +946,12 @@
 
             </section>
             <section>
-                <h3> JADE ContractNet ??? </h3>
+                <h3> JADE ContractNet </h3>
 
 
             </section>
             <section>
-                <h3> TuCSoN / Tusow ??? </h3>
+                <h3> TuCSoN / Tusow </h3>
 
 
             </section>
