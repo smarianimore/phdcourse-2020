@@ -50,6 +50,7 @@
                 <li class="fragment"> Why </li>
                 <li class="fragment"> What </li>
                 <li class="fragment"> How </li>
+                <li class="fragment"> Deep dive: Ethereum </li>
                 <li class="fragment"> Autonomy, too? </li>
             </ol>
 
@@ -296,13 +297,6 @@
                 <small><p><em>[https://blockchaindemo.io]</em></p></small>
 
             </section>
-        </section>
-        <section data-transition="convex">
-            <section data-transition="zoom">
-
-                <h2> How does the blockchain work? </h2>
-
-            </section>
             <section>
 
                 <h3><em>The</em> blockchain or <em>a</em> blockchain?</h3>
@@ -317,11 +311,165 @@
                     <p class="fragment">Which consensus?</p>
                     <small><ul class="fragment">
                         <li> quorum / leader election based </li>
-                        <li> robust to <span class="fragment">Byzantine failures</span> or not </li>
+                        <li> robust to <span class="fragment highlight-red">Byzantine failures</span> or not </li>
                         <li> competition-based approaches </li>
                     </ul></small>
-                    <p class="fragment">Many other parameters to precisely define properties of a <em>specific</em> blockchain</p>
+                    <p class="fragment">Many others to define properties of a <em>specific</em> blockchain</p>
                 </ul>
+
+            </section>
+            <section>
+
+                <h3> Byzantine failures </h3>
+
+                <ul>
+                    <p> Another fundamental problem in distributed computing: achieve system reliability in the presence of faulty processes </p>
+                    <small><ul class="fragment">
+                        <li> either by mistake (e.g. node crashing, disconnection) </li>
+                        <li> or on purpose (e.g. hostile node) </li>
+                    </ul></small>
+                    <p class="fragment"> Formalised as the <a href="https://dl.acm.org/doi/10.1145/1067629.806523">two generals problem</a>, then <a href="https://dl.acm.org/doi/10.1145/357172.357176">extended for $m \gt 2$</a> </p>
+                </ul>
+
+            </section>
+            <section>
+
+                <img class="stretch" data-src="2-generals.jpg">
+                <p> Theorem proved: for any $m$, consensus achieved if there are more than $3m$ participants with at most $m$ traitors </p>
+
+            </section>
+            <section>
+
+                <h3> Why bother? </h3>
+
+                <ul>
+                    <p> Due to the value of the asset stored in the ledger, hostile actors have economic incentives to, e.g., rewrite blocks </p>
+                    <small><ul class="fragment">
+                        <li> e.g. re-order transactions for double spending </li>
+                        <li> e.g. compromise signatures to steal assets </li>
+                        <li> <em>there is no central authority to recover!</em> </li>
+                    </ul></small>
+                    <p class="fragment"> <strong>Byzantine Fault Tolerance</strong> (BFT) consensus helps against attacks: </p>
+                    <small><ul class="fragment">
+                        <li> (distributed) Denial of Service (<span class="fragment highlight-red">transaction fees</span> help) </li>
+                        <li> sybil attack => impersonate N nodes (consensus help) </li>
+                        <li> eclipse attack => partition network, opens to other attacks (e.g. double-spending) </li>
+                        <li> routing attack => tamper with messages (hash & signatures help) </li>
+                    </ul></small>
+                </ul>
+
+            </section>
+        </section>
+        <section data-transition="convex">
+            <section data-transition="zoom">
+
+                <h2> How does the blockchain work? </h2>
+
+            </section>
+            <section>
+
+                <h3> Blocks lifecycle </h3>
+
+                <ol>
+                    <li> A user issues a transaction </li>
+                    <li class="fragment"> <strong>Signs</strong> it with private key $K$ </li>
+                    <li class="fragment"> Server node propagates the transaction to neighbours </li>
+                    <li class="fragment"> The transaction is <strong>validated</strong> by peers and dropped if invalid </li>
+                    <li class="fragment"> Valid transactions are eventually executed producing a <em>temporary</em> block </li>
+                    <li class="fragment"> Eventually, if the <strong>consensus</strong> protocol confirms the block, it is appended to the blockchain </li>
+                </ol>
+
+            </section>
+            <section>
+
+                <img class="stretch" data-src="peers.png">
+                <p> <a href="https://blockchaindemo.io/">See it working</a>: <em>[https://blockchaindemo.io/]</em> </p>
+
+            </section>
+            <section>
+
+                <h3> BFT </h3>
+
+                <ul>
+                    <p> When adding a new block, it needs to meet these requirements (at least): </p>
+                    <small><ul>
+                        <li class="fragment"> index = latest block index + 1 </li>
+                        <li class="fragment"> previous hash field = latest block hash field </li>
+                        <li class="fragment"> hash meets difficulty requirement (e.g. no. of leading zeroes) </li>
+                    </ul></small>
+                    <p class="fragment"> Hence, <strong>changing</strong> a committed block leads to a cascade of invalid blocks </p>
+                    <small><ol>
+                        <li class="fragment"> its hash changes </li>
+                        <li class="fragment"> previous hash field of next block changes... </li>
+                        <li class="fragment"> ...hence its own hash changes, and so on! </li>
+                    </ol></small>
+                </ul>
+
+            </section>
+            <section>
+
+                <ul>
+                <p> An attacker should: </p>
+                    <ul>
+                        <li class="fragment"> alter transactions in one block and re-mine that block </li>
+                        <li class="fragment"> re-mine each subsequent block </li>
+                        <li class="fragment"> do so while impersonating many nodes (consensus!) </li>
+                        <li class="fragment"> do so fast enough to not let the blockchain evolve in the meantime (otherwise, more blocks to re-mine) </li>
+                    </ul>
+                </ul>
+
+            </section>
+            <section>
+
+                <h3> Why be hostile? Why be nice? </h3>
+
+                <p class="fragment grow"> In both cases: <strong>M. O. N. E. Y.</strong></p>
+                <small><ul>
+                    <li class="fragment"> <span class="fragment highlight-red">hostile</span>: assets stored on blockchain have value, hence changing ownership is appealing </li>
+                    <li class="fragment"> <span class="fragment highlight-green">nice</span>: miners are rewarded / compensated for their job, usually with a given
+                        amount of cryptocurrency </li>
+                </ul></small>
+                <p class="fragment"> <em>Setting aside the blockchain from a native cryptocurrency is far from trivial and currently subject of active research!</em> </p>
+                <p class="fragment"> <a href="https://www.youtube.com/watch?v=S00MWI3YeP4">Could be a whole topic on its own...</a> </p>
+
+            </section>
+        </section>
+        <section data-transition="convex">
+            <section data-transition="zoom">
+
+                <h2> Deep dive: Ethereum </h2>
+
+            </section>
+            <section>
+
+                <p> Most of blockchain-related <em>technical</em> literature focus on a <strong>specific implementation</strong> </p>
+                <p class="fragment"> Until now we've been general, now we must choose a reference blockchain </p>
+                <p class="fragment"> <a href="https://gavwood.com/paper.pdf">Ethereum</a>: probably the most mature, studied, and documented blockchain feturing <span class="fragment highlight-red">smart contracts</span> </p>
+
+            </section>
+            <section>
+
+                <p> <em>"[...] alternative protocol for building decentralized applications [...]"</em></p>
+                <p> <em>"Ethereum does this by building what is essentially the ultimate abstract foundational
+                    layer: a blockchain with a built-in Turing-complete programming language, allowing anyone to
+                    write smart contracts and decentralized applications where they can create their own
+                    arbitrary rules for ownership, transaction formats and state transition functions.</em>" </p>
+
+            </section>
+            <section>
+
+                <p> <em>"Smart contracts, cryptographic 'boxes' that contain value and only unlock it if
+                    certain conditions are met, can also be built on top of the platform, with vastly more
+                    power than that offered by Bitcoin scripting because of the added powers of
+                    Turing-completeness, value-awareness, blockchain-awareness and state."</em> </p>
+
+            </section>
+            <section>
+
+                <h3> Not only users </h3>
+
+                <p> Ethereum admits also smart contracts to issue transactions, besides users </p>
+                <img class="stretch" data-src="entities.png">
 
             </section>
         </section>
