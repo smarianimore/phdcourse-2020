@@ -32,7 +32,7 @@
     <div class="slides">
         <section data-autoslide="5000" data-transition="fade">
 
-            <h1> The Blockchain: </h1>
+            <h2> The Blockchain: </h2>
             <br/>
             <h3> an overview </h3>
             <small><p><a href="index.html"> <em>(back to previous slides)</em> </a></p></small>
@@ -60,11 +60,179 @@
                 <h2> Why the blockchain? </h2>
 
             </section>
+            <section>
+
+                <img class="stretch" data-src="hype-cycle-2018.png" style="text-align: left; float: left;">
+                <br />
+                <p style="text-align: right; float: right;">
+                <li class="fragment"> Backbone of digitalized ecosystems </li>
+                <li class="fragment"> Decentralized Autonomous Organizations (DAOs) </li>
+                <li class="fragment"> IoT secure ledger </li>
+                </p>
+
+            </section>
+            <section>
+
+                <h3> Industrial perspective </h3>
+
+                <ul>
+                    <p> Way of dealing, essentially, with <strong>distributed asset tracking</strong> / <strong>identity management</strong> </p>
+                    <small><ul class="fragment">
+                        <li> prominent use case: cryptocurrency </li>
+                        <li> money is the asset to keep track of </li>
+                        <li> identity management is crucial </li>
+                    </ul></small>
+                    <p class="fragment"> A combination of distinct, already existing technologies </p>
+                    <small><ul class="fragment">
+                        <li> digital ledger </li>
+                        <li> encryption </li>
+                        <li> state machine replication </li>
+                    </ul></small>
+                </ul>
+
+            </section>
+            <section>
+
+                <h3> Research perspective </h3>
+
+                <p> <span class="fragment highlight-red">What can the blockchain do for distributed computing?</span> </p>
+                <p class="fragment"> Consensus, fault tolerance, smart contracts, ... </p>
+                <p class="fragment"> <strong>Ethereum</strong> as the reference blockchain </p>
+
+            </section>
         </section>
         <section data-transition="convex">
             <section data-transition="zoom">
 
                 <h2> What really is a blockchain? </h2>
+
+            </section>
+            <section>
+
+                <h3> BLOCKCHAIN $\neq$ BITCOIN </h3>
+
+                <p> The Blockchain is a <em>general concept</em> describing a <strong>model for distributed & decentralised computation</strong>, that
+                    may be implemented in a variety of ways, within heterogeneous application domains, and with disparate goals </p>
+                <p class="fragment"> Bitcoin <span class="fragment semi-fade-out">[Nakamoto, 2008]</span> is one <em>specific</em> implementation,
+                    in one <em>specific</em> application domain (cryptocurrencies), with a set of <em>specific</em> goals (drop the bank system) </p>
+
+            </section>
+            <section>
+
+                <h3> The blockchain at a glance </h3>
+
+                <ul>
+                    <li> P2P distributed ledger: shared, transparent, append-only registry of <span class="fragment highlight-green">transactions</span> </li>
+                    <li class="fragment"> Secure: hash functions, digital signatures, ... </li>
+                    <li class="fragment"> Replicated: no need for a trusted centralized authority </li>
+                    <li class="fragment"> <span class="fragment highlight-green">Consensus</span>-based: updates approved and propagated against Byzantine failures </li>
+                </ul>
+
+            </section>
+            <section>
+
+                <h3> Transactions </h3>
+
+                <ul>
+                    <p> A <strong>change of state</strong> in the blockchain: e.g. money transfer (in Bitcoin) </p>
+                    <p class="fragment"> <a href="https://andersbrownworth.com/blockchain/tokens">Once a transaction occurs</a>, a <span class="fragment highlight-green">block</span> is created and </p>
+                    <ol class="fragment">
+                        <li> is <span class="fragment highlight-green">validated</span> by peers </li>
+                        <li> if valid becomes permanent and immutable </li>
+                    </ol>
+                    <p class="fragment"> Validity: </p>
+                    <ul class="fragment">
+                        <li> <span class="fragment highlight-green">hash</span> must certify transaction integrity </li>
+                        <li> <span class="fragment highlight-green">signature</span> must match issuer identity </li>
+                        <li> issuer's balance must be sufficient </li>
+                    </ul>
+                </ul>
+
+            </section>
+            <section>
+
+                <h3> Blocks </h3>
+
+                <img class="stretch" data-src="block.png">
+                <p> Unit of information in the blockchain </p>
+                <p class="fragment"> If a change is to be made, <em>no block is altered or rewritten</em>,
+                    a new one is created, instead, and <em>chained</em> (block-chain) </p>
+
+            </section>
+            <section>
+
+                <h3> Hash </h3>
+
+                <ul>
+                    <p> In general, <a href="https://andersbrownworth.com/blockchain/hash">alphanumeric string with some properties</a>: </p>
+                    <small><ul class="fragment">
+                        <li> same data <em>always</em> maps to same hash </li>
+                        <li> different data <em>$\approx$always</em> maps to a different hash </li>
+                        <li> easy to compute hash from data </li>
+                        <li> <strong>infeasible</strong> to compute data from hash </li>
+                    </ul></small>
+                    <p class="fragment"> In blockchain, valid hash must have additional properties, e.g. $N$ of leading zeroes </p>
+                    <ul class="fragment">
+                        <li> increasing $N$ raises hasing difficulty $$block\_hash = f(index, timestamp, prev\_hash, data, nonce)$$ </li>
+                    </ul>
+                </ul>
+
+            </section>
+            <section>
+
+                <h3> Mining blocks </h3>
+
+                <ul>
+                    <p> <a href="https://andersbrownworth.com/blockchain/block">Finding a nonce</a> (number) which produces a desired hash, to <em>commit</em> the block </p>
+                    <ul class="fragment">
+                        <li> as difficulty increases, $M$ of valid hashes decreases </li>
+                        <li> with lower $M$, it takes more processing power / time to find a valid hash </li>
+                    </ul>
+                    <p class="fragment"> <em>"With great powers come great responsibilities"</em> </p>
+                    <small><ul class="fragment">
+                        <li> <strong>miners</strong> are the ones who find the nonce, hence write blockchain history (the blocks) </li>
+                        <li> thus can harm the system, too, either by mistake or maliciously (lying)! </li>
+                        <!--will see how the blockchain handles these risks in Part 3 (i.e. slides 28–29)-->
+                    </ul></small>
+                </ul>
+
+            </section>
+            <section>
+
+                <h3> Signature </h3>
+
+                <img class="stretch" data-src="signature.png" style="text-align: left; float: left;">
+                <p style="text-align: right; float: right;">
+                    Cryptographic tool to guarantee:</p>
+                <ul>
+                <small><li class="fragment"> integrity = info uncompromised </li>
+                <li class="fragment"> authenticity = info comes from that user </li></small>
+                </ul>
+                    <span class="fragment"> <a href="https://andersbrownworth.com/blockchain/public-private-keys/transaction">Asymmetric, private + public key infrastructure</a> </span>
+                <ul>
+                <small><li class="fragment"> data hashed by user $U$ with private key $K$ </li>
+                <li class="fragment"> data sent to user $U'$ along with $U$ public key $P$ </li>
+                <li class="fragment"> $U'$ decodes data using $P$ </li></small>
+                </ul>
+
+            </section>
+            <section>
+
+                <h3> Consensus </h3>
+
+                <ul>
+                    <p> The blockchain is made of networked nodes executing the same state machine ($\approx$program) </p>
+                    <p class="fragment"> Each node executes the same <a href="https://andersbrownworth.com/blockchain/distributed">consensus protocol</a></p>
+                    <ul class="fragment">
+                        <li> all nodes must be initialised with the <em>same initial state</em> </li>
+                        <li> inputs must be submitted to all replicas in the <em>same order</em> </li>
+                    </ul>
+                    <p class="fragment"> Consensus guarantees </p>
+                    <ul>
+                        <li> <strong>consistency</strong>: propagation of updates </li>
+                        <li> <strong>robustness</strong>: tolerance to nodes' failures </li>
+                    </ul>
+                </ul>
 
             </section>
         </section>
@@ -107,6 +275,7 @@
 </div>
 
 <script src="js/reveal.js"></script>
+<script src="plugin/math/math.js"></script>
 
 <script>
     Reveal.initialize({
@@ -128,7 +297,9 @@
             {src: 'plugin/zoom-js/zoom.js'},
             {src: 'plugin/notes/notes.js'},
             //{src: 'plugin/highlight/highlight.js', async: true}
-        ]
+        ],
+        plugins: [ RevealMath ],
+        slideNumber: true
     });
 </script>
 
