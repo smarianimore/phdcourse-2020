@@ -113,7 +113,7 @@
 
                 <p> The Blockchain is a <em>general concept</em> describing a <strong>model for distributed & decentralised computation</strong>, that
                     may be implemented in a variety of ways, within heterogeneous application domains, and with disparate goals </p>
-                <p class="fragment"> Bitcoin <span class="fragment semi-fade-out">[Nakamoto, 2008]</span> is one <em>specific</em> implementation,
+                <p class="fragment"> <a href="https://bitcoin.org/bitcoin.pdf">Bitcoin</a> is one <em>specific</em> implementation,
                     in one <em>specific</em> application domain (cryptocurrencies), with a set of <em>specific</em> goals (drop the bank system) </p>
 
             </section>
@@ -218,28 +218,110 @@
             </section>
             <section>
 
+                <p><a href="https://andersbrownworth.com/blockchain/public-private-keys/blockchain">All together now</a></p>
+
+                <small><p><em>[https://andersbrownworth.com/blockchain/public-private-keys/blockchain]</em></p></small>
+
+            </section>
+            <section>
+
                 <h3> Consensus </h3>
 
                 <ul>
-                    <p> The blockchain is made of networked nodes executing the same state machine ($\approx$program) </p>
+                    <p> The blockchain is made of <strong>networked</strong> nodes executing the same <strong>state machine</strong> ($\approx$program) </p>
                     <p class="fragment"> Each node executes the same <a href="https://andersbrownworth.com/blockchain/distributed">consensus protocol</a></p>
-                    <ul class="fragment">
+                    <small><ul class="fragment">
                         <li> all nodes must be initialised with the <em>same initial state</em> </li>
                         <li> inputs must be submitted to all replicas in the <em>same order</em> </li>
-                    </ul>
+                    </ul></small>
                     <p class="fragment"> Consensus guarantees </p>
-                    <ul>
+                    <ul class="fragment">
                         <li> <strong>consistency</strong>: propagation of updates </li>
                         <li> <strong>robustness</strong>: tolerance to nodes' failures </li>
                     </ul>
                 </ul>
 
             </section>
+            <section>
+
+                <h3> The distributed consensus problem </h3>
+
+                <ul>
+                    <p> <em>Fundamental problem</em> in distributed computing, core to leader election, mutual exclusion, distributed transactions, clock synchronization </p>
+                    <small><ul class="fragment">
+                        <li> each process $p_k$ has an input value $u_k$ </li>
+                        <li> processes exchange inputs so that the outputs of all <strong>non-faulty</strong> processes become same output </li>
+                        <li> output $v$ must be equal to at least one $u_k$ </li>
+                    </ul></small>
+                    <p class="fragment"> Any consensus protocol should guarantee termination, agreement, and validity (if each $u_k = v$ then utput should be $v$) </p>
+                </ul>
+
+            </section>
+            <section>
+
+                <p> <a href="https://groups.csail.mit.edu/tds/papers/Lynch/jacm85.pdf">FLP theorem</a>: </p>
+                <img class="stretch" data-src="flp.png">
+                <p class="fragment"> <span class="fragment highlight-green">No failures?</span> Easy consensus in any system </p>
+                <p class="fragment"> <span class="fragment highlight-red">Asynchronous network, deterministic algorithms?</span> Consensus impossible if failures! </p>
+
+            </section>
+            <section>
+
+                <h3> <a href="https://dl.acm.org/doi/10.1145/343477.343502">CAP theorem</a> </h3>
+
+                <img class="stretch" data-src="cap.jpg">
+                <p> For any distributed system, in case of failures (<span class="fragment highlight-red">partitioning</span>) choose amongst <span class="fragment highlight-green">consistency</span> and <span class="fragment highlight-green">availability</span> </p>
+
+            </section>
+            <section>
+
+                <h3> Blockchain vs. FLP & CAP </h3>
+
+                <p> Partitioning is intrinsic to blockchains, availability cannot be lost in many application domains,
+                    consistency is of paramount importance too, but there are ways we can have <em>almost</em> consistency </p>
+                <p class="fragment"> Research in blockchain contributed nice novel mechanisms to have <strong>eventual consistency</strong> (mostly, "Proof-of-<em>whatever</em>" techniques): "<em>sooner or later</em>, <strong>in finite (reasonable) time</strong>, things will become consistent" </p>
+                <!--see slides 39–46 for specific ways to have this-->
+
+            </section>
+            <section>
+
+                <p>Both problems are extremely relevant for blockchains, as its foundation is consistency without centralisation!</p>
+
+                <p><a href="https://andersbrownworth.com/blockchain/distributed">See the problem</a></p>
+
+                <p><a href="https://blockchaindemo.io">See a solution</a></p>
+
+                <small><p><em>[https://andersbrownworth.com/blockchain/distributed]</em></p></small>
+
+                <small><p><em>[https://blockchaindemo.io]</em></p></small>
+
+            </section>
         </section>
         <section data-transition="convex">
             <section data-transition="zoom">
 
-                <h2> How does a blockchain work? </h2>
+                <h2> How does the blockchain work? </h2>
+
+            </section>
+            <section>
+
+                <h3><em>The</em> blockchain or <em>a</em> blockchain?</h3>
+
+                <ul>
+                    <p>Many factors influence how a blockchain actually work:</p>
+                    <p class="fragment"><strong>Permissioned</strong> vs. <strong>Permissionless</strong></p>
+                    <small><ul class="fragment">
+                        <li> users craft their own id vs. get an id from a certified authority </li>
+                        <li> <a href="">Hyperledger Fabric</a> vs. <a href="">Ethereum</a> </li>
+                    </ul></small>
+                    <p class="fragment">Which consensus?</p>
+                    <small><ul class="fragment">
+                        <li> quorum / leader election based </li>
+                        <li> robust to <span class="fragment">Byzantine failures</span> or not </li>
+                        <li> competition-based approaches </li>
+                    </ul></small>
+                    <p class="fragment">Many other parameters to precisely define properties of a <em>specific</em> blockchain</p>
+                </ul>
 
             </section>
         </section>
