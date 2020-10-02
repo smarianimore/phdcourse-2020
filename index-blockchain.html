@@ -51,6 +51,7 @@
                 <li class="fragment"> What </li>
                 <li class="fragment"> How </li>
                 <li class="fragment"> Deep dive: Ethereum </li>
+                <li class="fragment"> Deep dive: smart contracts </li>
                 <li class="fragment"> Autonomy, too? </li>
             </ol>
 
@@ -323,7 +324,7 @@
                 <h3> Byzantine failures </h3>
 
                 <ul>
-                    <p> Another fundamental problem in distributed computing: achieve system reliability in the presence of faulty processes </p>
+                    <p> Another fundamental problem in distributed computing: achieve system <strong>reliability</strong> in the presence of <strong>faulty processes</strong> </p>
                     <small><ul class="fragment">
                         <li> either by mistake (e.g. node crashing, disconnection) </li>
                         <li> or on purpose (e.g. hostile node) </li>
@@ -335,7 +336,7 @@
             <section>
 
                 <img class="stretch" data-src="2-generals.jpg">
-                <p> Theorem proved: for any $m$, consensus achieved if there are more than $3m$ participants with at most $m$ traitors </p>
+                <p> <strong>Theorem</strong> proved: for any $m$, consensus achieved if there are more than $3m$ participants with at most $m$ traitors </p>
 
             </section>
             <section>
@@ -343,7 +344,7 @@
                 <h3> Why bother? </h3>
 
                 <ul>
-                    <p> Due to the value of the asset stored in the ledger, hostile actors have economic incentives to, e.g., rewrite blocks </p>
+                    <p> Due to the value of the asset stored in the ledger, <em>hostile actors have economic incentives</em> to, e.g., rewrite blocks </p>
                     <small><ul class="fragment">
                         <li> e.g. re-order transactions for double spending </li>
                         <li> e.g. compromise signatures to steal assets </li>
@@ -433,6 +434,12 @@
                 <p class="fragment"> <a href="https://www.youtube.com/watch?v=S00MWI3YeP4">Could be a whole topic on its own...</a> </p>
 
             </section>
+            <section>
+
+                <p> <a href="https://youtu.be/BuTj9raHQOU">Let's clarify</a> </p>
+                <p> <small><em>[https://youtu.be/BuTj9raHQOU]</em></small> </p>
+
+            </section>
         </section>
         <section data-transition="convex">
             <section data-transition="zoom">
@@ -449,9 +456,9 @@
             </section>
             <section>
 
-                <p> <em>"[...] alternative protocol for building decentralized applications [...]"</em></p>
+                <p> <em>"[...] alternative protocol for building <strong>decentralized applications</strong> [...]"</em></p>
                 <p> <em>"Ethereum does this by building what is essentially the ultimate abstract foundational
-                    layer: a blockchain with a built-in Turing-complete programming language, allowing anyone to
+                    layer: a blockchain with a <strong>built-in Turing-complete programming language</strong>, allowing anyone to
                     write smart contracts and decentralized applications where they can create their own
                     arbitrary rules for ownership, transaction formats and state transition functions.</em>" </p>
 
@@ -470,6 +477,119 @@
 
                 <p> Ethereum admits also smart contracts to issue transactions, besides users </p>
                 <img class="stretch" data-src="entities.png">
+
+            </section>
+            <section>
+
+                <h3> Transactions </h3>
+
+                <ul>
+                    <li> Value transfers </li>
+                    <li> Deployment of a smart contract (SC) </li>
+                    <li> Invocation of a SC </li>
+                </ul>
+
+                <img class="stretch" data-src="transactions.png">
+
+            </section>
+            <section>
+
+                <h3> Consensus </h3>
+
+                <ul>
+                    <li> Agreement on starting state </li>
+                    <sli> Agreement on ordering of input transactions </sli>
+                    <li> Tolerant to Byzantine failures: <strong>Proof-of-Work</strong> (PoW) </li>
+                </ul>
+
+            </section>
+            <section>
+
+                <h3> PoW </h3>
+
+                <ul>
+                    <p> The first miner to find the nonce of a block propagates its proof and, if confirmed by others,
+                        gets the right to publish the new block and a <strong>reward</strong> (a transaction fee charged on the issuer) </p>
+                    <p class="fragment"> The specific protocol is <a href="https://link.springer.com/chapter/10.1007/978-3-662-47854-7_32">GHOST</a>, which provides <strong>probabilistic eventual consistency</strong> </p>
+                    <small><ul class="fragment">
+                        <li> inconsistencies can temporarily arise in the form of "forks" </li>
+                        <li> the protocol takes care of making one <em>eventually prevail</em> on the others </li>
+                        <li> <strong>probability</strong> of block $B$ to be inconsistent $\rightarrow 0$ exponentially with the amount $N$ of blocks after $B$ (confirmations) </li>
+                    </ul></small>
+                </ul>
+
+            </section>
+            <section>
+
+                <h3> Forks </h3>
+
+                <ul>
+                    <p> Common in blockchains since they run <em>asynchronously</em>: network delays => peers may see different blocks seemingly mined at same time, or same block at different times </p>
+                    <p class="fragment"> <strong>Probability</strong> that two distinct sub-nets find blocks $\approx$simultaneously vanishes with the length of the chain </p>
+                    <p class="fragment"> If an hostile sub-net create blocks <strong>faster</strong> than the nice one, <em>it can rewrite history</em> to overtake the honest chain </p>
+                    <p class="fragment"> Faster $\approx$ hostile sub-net is "bigger" (in computatinal terms) </p>
+                </ul>
+
+            </section>
+            <section>
+
+                <img class="stretch" data-src="pow.png">
+
+            </section>
+        </section>
+        <section data-transition="convex">
+            <section data-transition="zoom">
+
+                <h2> Deep dive: smart contracts </h2>
+
+            </section>
+            <section>
+
+                <ul>
+                    <p> Smart contracts are <strong>arbitrary computations</strong> executed <em>on the blockchain</em> </p>
+                    <small><ul>
+                        <li class="fragment"> <strong>stateful</strong>: encapsulate their own state </li>
+                        <li class="fragment"> <strong>user-defined</strong>: any user may publish a smart contract </li>
+                        <li class="fragment"> <strong>reactive</strong>: only activate on external input (transactions) </li>
+                        <li class="fragment"> <strong>immutable</strong>: smart contracts code cannot change </li>
+                        <li class="fragment"> <strong>secured</strong>: cryptographic measures as for blocks and transactions </li>
+                        <li class="fragment"> <strong>deterministic</strong>: always same outputs if given the same inputs and state </li>
+                        <li class="fragment"> <strong>decentralised</strong>: no centralised coordinator, concurrent execution </li>
+                    </ul></small>
+                </ul>
+
+            </section>
+            <section>
+
+                <h3> <a href="https://dl.acm.org/doi/10.1145/98163.98167">State machine replication</a> (SMR) </h3>
+
+                <p> Each node in the blockchain network should behave the same, according to the protocol => each node executes the same "program" (<em>the "blockchain application"</em>) </p>
+                <p class="fragment"> <span class="fragment highlight-red"> What if we replicate a program implementing an <em>intepreter for other programs? </em></span> </p>
+
+            </section>
+            <section>
+
+                <p> Each node of the blockchain executes arbitrary programs published through the blockchain API => <strong>Universal SMR</strong> </p>
+                <p class="fragment grow"> <em>The blockchain becomes sort of middleware for decentralised computations!</em> </p>
+
+            </section>
+            <section>
+
+                <h3> SC lifecycle </h3>
+
+                <ul>
+                    <p> Deployment stage: </p>
+                    <small><ul>
+                        <li class="fragment"> user instantiates a SC by publishing its source/byte-code (deployment transaction) </li>
+                        <li class="fragment"> once transaction confirmed, the SC instance is running on all blockchain nodes (replicas) </li>
+                    </ul></small>
+                    <p class="fragment"> Invocation stage: </p>
+                    <small><ul>
+                        <li class="fragment"> users trigger SC with invocation transactions (and providing input) </li>
+                        <li class="fragment"> <strong>eventually</strong>, each replica receives the transaction and executes it </li>
+                        <li class="fragment"> a new block with the SC output is <strong>eventually</strong> confirmed by the consensus protocol (hence committed) </li>
+                    </ul></small>
+                </ul>
 
             </section>
         </section>
