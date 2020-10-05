@@ -84,7 +84,7 @@
                 <br />
                 <p style="text-align: right; float: right;">
                     <li class="fragment"> Autonomous driving </li>
-                    <li class="fragment"> Decentralized Autonomous Organizations (DAOs) </li>
+                    <li class="fragment"> Decentralized Autonomous Organizations </li>
                     <li class="fragment"> Autonomous examination of data (advanced AI) </li>
                 </p>
 
@@ -314,8 +314,8 @@
                         <li class="fragment"> <strong>deliberation</strong>: decision about what goal to pursue (adopting <em>intentions</em>) </li>
                         <li class="fragment"> <strong>means-ends reasoning</strong>: decision about how to achieve goal (carry out actions) </li>
                     </ul></small>
-                    <li class="fragment"> Our focus will be on the latter </li>
                 </ul>
+                <p class="fragment"> Our focus will be on the latter </p>
 
             </section>
             <section>
@@ -377,12 +377,223 @@
             </section>
             <section>
 
-                <p> JADE example ??? </p>
+                <h3> JADE example </h3>
+
+                <p> <a href="">JADE</a> stands for <strong>Java Agent DEvelopment Framework</strong> </p>
+                <p> <a href="http://jade.tilab.com/">http://jade.tilab.com/</a> </p>
+                <p class="fragment"> JADE is a notable example of a
+                    distributed, <strong>object-based</strong>, <strong>agent-oriented</strong> infrastructure,
+                    hence an interesting example about how to face a design / programming <em>paradigm shift</em> </p>
 
             </section>
             <section>
 
-                <p> Jason example ??? </p>
+                <ul>
+                    <p> Despite being Java objects, JADE agents have a wide range of features
+                        promoting their <strong>autonomy</strong>: </p>
+                    <ul>
+                        <li class="fragment"> each JADE agent is executed by a single Java thread </li>
+                        <li class="fragment"> agents activities must be expressed in terms of <strong>behaviours</strong> </li>
+                        <li class="fragment"> JADE agents communicate by exchanging messages </li>
+                    </ul>
+                </ul>
+
+            </section>
+            <section>
+
+                <ul>
+                    <p> A behaviour can be seen as an <em>activity to perform with the goal of
+                        completing a task</em> </p>
+                    <p class="fragment"> It can represent a <strong>proactive</strong> activity, started by the agent on
+                        its own, as well as a <strong>reactive</strong> activity, performed in response to
+                        some events (timeouts, messages, etc.) </p>
+                    <p class="fragment"> Behaviours are Java objects executed
+                        <strong>concurrently</strong> by a <strong>round-robin scheduler</strong> </p>
+                </ul>
+
+            </section>
+            <section>
+
+                <img class="stretch" data-src="jade-behaviours.png">
+
+            </section>
+            <section>
+
+                <pre class="java"><code>
+public class Pinger extends Agent {
+    @Override
+    protected void setup() {
+        addBehaviour(sendPing());
+        addBehaviour(listenForPong());
+    }
+
+    private MessageTemplate pongMessageTemplate() {
+        return MessageTemplate.and(
+                MessageTemplate.MatchPerformative(Performative.INFORM.getJadeValue()),
+                MessageTemplate.MatchSender(localAID("ponger"))
+        );
+    }
+
+    private Behaviour sendPing() {
+        return sequence(
+                sendMessage(Performative.INFORM, "ping", localAID("ponger")),
+                atomic(() -> log("Sent `ping` to ponger"))
+        );
+    }
+
+    private Behaviour listenForPong() {
+        return listen(
+                pongMessageTemplate(),
+                msg -> {
+                    log("Received `%s` from %s", msg.getContent(), msg.getSender().getLocalName());
+                    addBehaviour(sendPing());
+                }
+        );
+    }
+                </code></pre>
+
+            </section>
+            <section>
+
+                <h3> Jason example </h3>
+
+                <p> Jason is a <strong>BDI agent programming</strong> language and development framework </p>
+                <p> <a href="http://jason.sourceforge.net">http://jason.sourceforge.net</a> </p>
+                <ul>
+                    <p class="fragment"> Jason language is a variant of <a href="">AgentSpeak</a>, whose main constructs are: </p>
+                    <ul>
+                        <li class="fragment"> <strong>beliefs</strong> </li>
+                        <li class="fragment"> <strong>goals</strong> (the desires of BDI) </li>
+                        <li class="fragment"> <strong>plans</strong>, as lists of actions achieving a given goal (the intentions of BDI) </li>
+                    </ul>
+                </ul>
+
+
+            </section>
+            <section>
+
+                <img class="stretch" data-src="jason-arch.png">
+
+            </section>
+            <section>
+
+                <ul>
+                    <p> Jason agent reasoning cycle: </p>
+                    <small><ol>
+                        <li> perceiving the environment </li>
+                        <li> updating the belief base </li>
+                        <li> receiving communication from other agents </li>
+                        <li> selecting ‘socially acceptable’ messages </li>
+                        <li> selecting an event </li>
+                        <li> retrieving all relevant plans </li>
+                        <li> determining the applicable plans </li>
+                        <li> selecting one applicable plan </li>
+                        <li> selecting an intention for further execution </li>
+                        <li> executing one step of an intention </li>
+                    </ol></small>
+                </ul>
+
+            </section>
+            <section>
+
+                <pre class="prolog"><code>
+target(20).
+
++temperature(X) <- !regulate_temperature(X).
+
++!regulate_temperature(X) : target(Y) & X - Y > 0.5 <-
+    .print("Temperature is ", X, ": need to cool down");
+    spray_air(cold).
+
++!regulate_temperature(X) : target(Y) & Y - X > 0.5 <-
+    .print("Temperature is ", X, ": need to warm up");
+    spray_air(hot).
+
++!regulate_temperature(X) : target(Y) & Z = X - Y & Z >= -0.5 & Z <= 0.5 <-
+    .print("Temperature is ", X, ": it's ok.").
+
+-!regulate_temperature(X) <-
+    .print("Failed to spray air. Retrying.");
+    !regulate_temperature(X).
+                </code></pre>
+
+            </section>
+            <section>
+
+            <pre class="java"><code>
+public class TemperatureEnvironment extends Environment {
+
+    private static final Random RAND = new Random();
+
+    // action literals
+    public static final Literal hotAir = Literal.parseLiteral("spray_air(hot)");
+    public static final Literal coldAir = Literal.parseLiteral("spray_air(cold)");
+
+    static Logger logger = Logger.getLogger(TemperatureEnvironment.class.getName());
+
+    private double temperature;
+
+    @Override
+    public void init(final String[] args) {
+        if (args.length >= 1) {
+            temperature = Double.parseDouble(args[0]);
+        } else {
+            temperature = RAND.nextDouble() * 20 + 10;
+        }
+    }
+
+    @Override
+    public Collection<Literal> getPercepts(String agName) {
+        return Collections.singletonList(
+                Literal.parseLiteral(String.format("temperature(%s)", temperature))
+        );
+    }
+
+    private static final double FAILURE_PROBABILITY = 0.2;
+
+    @Override
+    public boolean executeAction(final String ag, final Structure action) {
+        boolean result = true;
+        if (RAND.nextDouble() < FAILURE_PROBABILITY) {
+            result = false;
+        } else if (action.equals(hotAir)) {
+            temperature += 0.1;
+        } else if (action.equals(coldAir)) {
+            temperature -= 0.1;
+        } else {
+            RuntimeException e = new IllegalArgumentException("Cannot handle action: " + action);
+            logger.warning(e.getMessage());
+            throw e;
+        }
+        try {
+            Thread.sleep(500L); // Slowdown the system
+        } catch (InterruptedException ignored) {
+        }
+        return result;
+    }
+}
+            </code></pre>
+
+            </section>
+            <section>
+
+                <h3> Autonomy <=> adaptiveness </h3>
+
+                <p> What is <span class="fragment highlight-red">adaptiveness</span>? </p>
+                <p class="fragment"> The capability of a system and/or of its individuals of <strong>changing its behavior</strong> according to contingent situations </p>
+                <small><ul>
+                    <li class="fragment"> re-organizes itself in response to stimuli (<strong>flexibility</strong>) </li>
+                    <li class="fragment"> preserves the same overall dynamics (<strong>robustness</strong>) </li>
+                </ul></small>
+                <p class="fragment"><em>Autonomy (of decision making) enables adaptiveness, and adaptiveness is a way of exhibiting autonomy, in turn!</em> </p>
+
+            </section>
+            <section>
+
+                <p> Can be achieved via <strong>context-awareness</strong>: knowledge of the environment, conditions under which
+                the agent operates </p>
+                <p class="fragment"> <em>As <strong>situated</strong> components, agents are inherently context-aware!</em> </p>
+                <p class="fragment"> Where agents cannot reach, suitable middleware provides desired services... </p>
 
             </section>
         </section>
@@ -536,6 +747,16 @@
             <section>
 
                 <img class="stretch" data-src="utility-curve.png">
+
+            </section>
+            <section>
+
+                <h3> Utility and adaptation </h3>
+
+                <p> Utility is one of the many things that can work as a driver to adaptation: the lower the utility of an action,
+                    the greater the chance for the agent to change action / behaviour / goal... </p>
+                <p class="fragment"> As utility of an action may vary dynamically based on context (environment),
+                adaptation of the agent may act and vary dynamically, too </p>
 
             </section>
             <section>
@@ -745,6 +966,24 @@
                 <p class="fragment">A whole research topic on its own...</p>
 
             </section>
+            <section>
+
+                <h3> Learning $\approx$ adaptiveness? </h3>
+
+                <ul>
+                    <p> Long story short: no </p>
+                    <ul class="fragment">
+                        <li> the former implies acquiring new knowledge from past experience, to be used in future situations </li>
+                        <li> the latter implies changing behaviour upon a change in context of action (can be purely <em>reactive</em>) </li>
+                    </ul>
+                    <p class="fragment"> However </p>
+                    <ul class="fragment">
+                        <li> learning may lead to adaptation, e.g. when new knowledge affects the utility function of an agent </li>
+                        <li> agents may <em>learn how to adapt</em> (e.g. by monitoring outcomes of past adaptation actions) </li>
+                    </ul>
+                </ul>
+
+            </section>
         </section>
         <section data-transition="convex">
             <!--<section data-transition="zoom">
@@ -880,7 +1119,7 @@
                 <h3> Direct interaction: negotiation </h3>
 
                 <ul>
-                    <p> <em>"Negotiation is an economically-inspired form of <strong>distributed decision making</strong> where two or more
+                    <p> <em>"Negotiation is an economically-inspired form of <strong>distributed decision making</strong> where two or more
                         partners jointly search a space of possible solutions to reach a common consensus"</em> (P. Maes) </p>
                     <ul>
                         <li class="fragment"> Collaborative --> <span class="fragment highlight-green">ContractNet</span>, argumentation </li>
@@ -941,19 +1180,37 @@
 
             </section>
             <section>
+
                 <h3> The tuple space model </h3>
 
                 [pic]
 
             </section>
             <section>
+
                 <h3> JADE ContractNet </h3>
 
 
             </section>
             <section>
+
                 <h3> TuCSoN / Tusow </h3>
 
+
+            </section>
+            <section>
+
+                <h3> Interactions enable adaptiveness </h3>
+
+                <p> In several cases, <em>ensembles</em> of very simple, purely "reactive"
+                    components, may globally exhibit adaptive behaviours, <strong>as a system</strong> (e.g. single cell vs. organism) </p>
+                <p class="fragment"> In these cases, adaptiveness is a capability
+                    that <em>emerges</em> not from individual behaviour in isolation, but from individuals' <strong>interactions</strong> (nature, medium, rate, ...) </p>
+
+            </section>
+            <section>
+
+                <h3> NetLogo </h3>
 
             </section>
         </section>
