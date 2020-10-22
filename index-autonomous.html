@@ -972,15 +972,15 @@ public class TemperatureEnvironment extends Environment {
 
                 <ul>
                     <p> Long story short: no </p>
-                    <ul class="fragment">
+                    <small><ul class="fragment">
                         <li> the former implies acquiring new knowledge from past experience, to be used in future situations </li>
                         <li> the latter implies changing behaviour upon a change in context of action (can be purely <em>reactive</em>) </li>
-                    </ul>
+                    </ul></small>
                     <p class="fragment"> However </p>
-                    <ul class="fragment">
+                    <small><ul class="fragment">
                         <li> learning may lead to adaptation, e.g. when new knowledge affects the utility function of an agent </li>
                         <li> agents may <em>learn how to adapt</em> (e.g. by monitoring outcomes of past adaptation actions) </li>
-                    </ul>
+                    </ul></small>
                 </ul>
 
             </section>
@@ -1151,6 +1151,84 @@ public class TemperatureEnvironment extends Environment {
             </section>
             <section>
 
+                <h3> JADE ContractNet: initiator </h3>
+
+                <pre class="java"><code>
+public class Initiator extends Agent {
+
+    @Override
+    protected void setup() {
+        this.addBehaviour(new ContractNetInitiator(this, new ACLMessage(ACLMessage.CFP)) {
+            @Override
+            protected Vector prepareCfps(ACLMessage cfp) {
+                /* prepare ACL message Call for Proposals */
+                return super.prepareCfps(cfp);
+            }
+
+            @Override
+            protected void handlePropose(ACLMessage propose, Vector acceptances) {
+                /* handle proposal coming from responders */
+                super.handlePropose(propose, acceptances);
+            }
+
+            @Override
+            protected void handleRefuse(ACLMessage refuse) {
+                /* handle refusals coming from responders */
+                super.handleRefuse(refuse);
+            }
+
+            @Override
+            protected void handleAllResponses(Vector responses, Vector acceptances) {
+                /* when all replies to CFP have been collected, do something (select winner) */
+                super.handleAllResponses(responses, acceptances);
+            }
+
+            @Override
+            protected void handleInform(ACLMessage inform) {
+                /* handle confirmations of tasks carried out coming from responders */
+                super.handleInform(inform);
+            }
+
+        });
+    }
+
+}
+                </code></pre>
+
+            </section>
+            <section>
+
+                <h3> JADE ContractNet: responder </h3>
+
+                <pre class="java"><code>
+public class Responder extends Agent {
+
+    @Override
+    protected void setup() {
+        MessageTemplate template = MessageTemplate.and(
+                MessageTemplate.MatchProtocol(FIPANames.InteractionProtocol.FIPA_CONTRACT_NET),
+                MessageTemplate.MatchPerformative(ACLMessage.CFP) );
+        this.addBehaviour(new ContractNetResponder(this, template) {
+            @Override
+            protected ACLMessage handleCfp(ACLMessage cfp) throws RefuseException, FailureException, NotUnderstoodException {
+                /* react to reception of call for proposals */
+                return super.handleCfp(cfp);
+            }
+
+            @Override
+            protected ACLMessage handleAcceptProposal(ACLMessage cfp, ACLMessage propose, ACLMessage accept) throws FailureException {
+                /* react to acceptance of own proposal (do the task, then inform result) */
+                return super.handleAcceptProposal(cfp, propose, accept);
+            }
+        });
+    }
+
+}
+                </code></pre>
+
+            </section>
+            <section>
+
                 <h3> Auctions </h3>
 
                 <p> When agents have competing interests and no interest
@@ -1183,13 +1261,7 @@ public class TemperatureEnvironment extends Environment {
 
                 <h3> The tuple space model </h3>
 
-                [pic]
-
-            </section>
-            <section>
-
-                <h3> JADE ContractNet </h3>
-
+                <img class="stretch" data-src="ts.png">
 
             </section>
             <section>
@@ -1238,6 +1310,7 @@ public class TemperatureEnvironment extends Environment {
     </div>
 </div>
 
+<link rel="stylesheet" href="lib/css/monokai.css">
 <script src="js/reveal.js"></script>
 <script src="plugin/math/math.js"></script>
 
@@ -1260,7 +1333,7 @@ public class TemperatureEnvironment extends Environment {
             {src: 'plugin/markdown/markdown.js'},
             {src: 'plugin/zoom-js/zoom.js'},
             {src: 'plugin/notes/notes.js'},
-            //{src: 'plugin/highlight/highlight.js', async: true}
+            {src: 'plugin/highlight/highlight.js', async: true}
         ],
         plugins: [ RevealMath ],
         slideNumber: true
