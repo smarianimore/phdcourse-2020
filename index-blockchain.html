@@ -52,7 +52,7 @@
                 <li class="fragment"> How </li>
                 <li class="fragment"> Deep dive: Ethereum </li>
                 <li class="fragment"> Deep dive: smart contracts </li>
-                <li class="fragment"> Autonomy, too? </li>
+                <li class="fragment"> Conclusion </li>
             </ol>
 
         </section>
@@ -536,6 +536,23 @@
                 <img class="stretch" data-src="pow.png">
 
             </section>
+            <section>
+
+                <h3> <a href="https://web.stanford.edu/~ouster/cgi-bin/papers/raft-atc14">RAFT</a> (<a href="https://www.hyperledger.org/use/fabric">Hyperledger Fabric</a>) </h3>
+
+                <ul>
+                    <p> Consensus protocol easy to understand and implement (verifiability) </p>
+                    <small><ul>
+                        <li class="fragment"> leader election </li>
+                        <li class="fragment"> log replication </li>
+                        <li class="fragment"> liveness maintainance + self-repair (= safety) </li>
+                    </ul></small>
+                    <p class="fragment"> By contrast, GHOST is quite convoluted and implementations usually have some degrees of freedom </p>
+                    <p class="fragment"> However, <strong>RAFT is not BFT</strong> </p>
+                </ul>
+                <small><p> <a href="http://thesecretlivesofdata.com/raft/">See it in action</a>: http://thesecretlivesofdata.com/raft/ </p></small>
+
+            </section>
         </section>
         <section data-transition="convex">
             <section data-transition="zoom">
@@ -592,11 +609,61 @@
                 </ul>
 
             </section>
+            <section>
+
+                <p> Check out, design, and test SC <strong>for free</strong> on Ethereum Remix IDE </p>
+                <p> Follow instructions at <a href="https://github.com/ethereum/remix-workshops">https://github.com/ethereum/remix-workshops</a> </p>
+
+            </section>
         </section>
         <section data-transition="convex">
             <section data-transition="zoom">
 
-                <h2> Is autonomy involved? </h2>
+                <h2> Conclusion </h2>
+
+            </section>
+            <section>
+
+                <h3> Main takeways </h3>
+
+                <p> Hype aside, the blockchain truly is <em>potentially disrupting</em>: forget about cryptocurrencies,
+                    think about Electronic Medical Records auditing, supply chain tracking, etc. </p>
+                <p class="fragment"> <strong>Consensus</strong> plays critical role in defining properties: strength of eventual consistency, BFT or not, role and power of miners </p>
+                <p class="fragment"> <strong>Smart Contracts</strong> are still to be fully explored... </p>
+
+            </section>
+            <section>
+
+                <h3> Personal interests </h3>
+
+                <ul>
+                    <p> From the standpoint of distributed systems and artificial intelligence, <span class="fragment highlight-red">what is the expressiveness of the blockchain?</span> </p>
+                    <small><ol>
+                        <li class="fragment"> can we do something else besides asset tracking and identity management? </li>
+                        <li class="fragment"> can we design more powerful smart contracts? </li>
+                    </ol></small>
+                    <p class="fragment"> 1 --> <span class="fragment highlight-green">Blockchain-based coordination</span> </p>
+                    <p class="fragment"> 2 --> <span class="fragment highlight-green">Agent-oriented smart contracts</span> </p>
+                </ul>
+
+            </section>
+            <section>
+
+                <h3> Blockchain-based coordination </h3>
+
+                <p> <em>Can we implement Linda in Ethereum?</em> </p>
+                <p class="fragment"> <strong>Goal</strong>: bring the blockchain to MAS world, gaining "for free" its safety and security properties </p>
+                <p class="fragment"> <a href="https://www.mdpi.com/2078-2489/11/1/52">Blockchain-Based Coordination: Assessing the Expressive Power of Smart Contracts</a> (<em>S. Mariani et al.</em>) </p>
+
+            </section>
+            <section>
+
+                <h3> Agent-oriented smart contracts </h3>
+
+                <p> <em>Can we design and implement smart contracts as agents?</em> </p>
+                <p class="fragment"> <strong>Goal</strong>: bring agents to the blockchain world, gaining "for free" their greater expressiveness </p>
+                <p class="fragment"> <a href="https://link.springer.com/chapter/10.1007%2F978-3-030-24209-1_3">Towards Agent-Oriented Blockchains: Autonomous Smart Contracts</a> (<em>S. Mariani et al.</em>) </p>
+                <p class="fragment"> <a href="https://gitlab.com/pika-lab/blockchain/tenderfone/tenderfone-sc">Tenderfone</a> blockchain (<span class="fragment highlight-blue"><em>developed as master thesis!</em></span>) </p>
 
             </section>
         </section>
@@ -613,6 +680,32 @@
                 <br/>
                 <p><a href="http://personale.unimore.it/rubrica/dettaglio/s.mariani"> Stefano Mariani </a></p>
                 <p><small><em> Università di Modena e Reggio Emilia </em></small></p>
+
+            </section>
+            <section>
+
+                <h3> Useful resources </h3>
+
+                <ul>
+                    <p> Interactive tutorials: </p>
+                    <small><ul>
+                        <li> <a href="https://andersbrownworth.com/blockchain/">https://andersbrownworth.com/blockchain/</a> </li>
+                        <li> <a href="https://andersbrownworth.com/blockchain/public-private-keys/">https://andersbrownworth.com/blockchain/public-private-keys/</a> </li>
+                        <li> <a href="https://blockchaindemo.io/">https://blockchaindemo.io/</a> </li>
+                        <li> <a href="https://coindemo.io/">https://coindemo.io/</a> </li>
+                        <li> <a href="http://thesecretlivesofdata.com/raft/">http://thesecretlivesofdata.com/raft/</a> </li>
+                    </ul></small>
+                    <p> Introductory papers: </p>
+                    <small><ul>
+                        <li> <a href="https://dl.acm.org/citation.cfm?doid=3234519.3225619">Blockchain revolution without the blockchain?</a> (on the origins of blockchain) </li>
+                        <li> <a href="https://dl.acm.org/citation.cfm?doid=3310134.3209623">Blockchains from a distributed computing perspective</a> (distributed systems perspective) </li>
+                    </ul></small>
+                    <p> On consensus: </p>
+                    <small><ul>
+                        <li> <a href="https://medium.com/oracledevs/demystifying-blockchain-and-consensus-mechanisms-everything-you-wanted-to-know-but-were-never-aabe62145128">Medium article</a> </li>
+                        <li> <a href="https://www.verypossible.com/blog/pros-and-cons-of-different-blockchain-consensus-protocols">Article from "Very possible" company</a> </li>
+                    </ul></small>
+                </ul>
 
             </section>
             <!--<section data-autoslide="3000">
