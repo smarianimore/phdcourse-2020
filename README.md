@@ -4,8 +4,35 @@ Slides for the PhD course "Emerging IT technologies: Autonomous Systems and Bloc
 
 Home page of the course: [https://github.com/smarianimore/phdXXXVI-asb](https://github.com/smarianimore/phdXXXVI-asb)
 
- * Interactive presentation: [here](https://smarianimore.github.io/phdcourse-2020/)
- * PDF version: [there](https://smarianimore.github.io/phdcourse-2020/?print-pdf)
+The course is divided in two lectures:
+- [Autonomous systems: an overview](https://smarianimore.github.io/phdcourse-2020/index-autonomous.html)
+    - On the notion of autonomy
+    - Agents
+    - Multiagent systems
+    - Game theory: individual stance
+    - Game theory: collective stance
+    - Multiagent interactions
+    - Conclusion
+- [Blockchain: an overview](https://smarianimore.github.io/phdcourse-2020/index-blockchain.html)
+    - Why
+    - What
+    - How
+    - Deep dive: Ethereum
+    - Deep dive: smart contracts
+    - Conclusion
+
+Link to the course slides, *interactive version* (navigation buttons at bottom-right): https://smarianimore.github.io/phdcourse-2020/
+- direct link to the first part (autonomous systems): https://smarianimore.github.io/phdcourse-2020/index-autonomous.html
+- direct link to the second part (blockchain): https://smarianimore.github.io/phdcourse-2020/index-blockchain.html
+
+Link to the course slides, *pdf version*: https://smarianimore.github.io/phdcourse-2020/?print-pdf/
+- direct link to the first part (autonomous systems): https://smarianimore.github.io/phdcourse-2020/index-autonomous.html?print-pdf/
+- direct link to the second part (blockchain): https://smarianimore.github.io/phdcourse-2020/index-blockchain.html?print-pdf/
+
+Links to code examples:
+- [JADE examples](https://github.com/smarianimore/phdcourse-2020-jade)
+- [Jason example](https://gitlab.com/pika-lab/courses/as/ay1920/jason-agents) (kindly provided by [Giovanni Ciatto](https://about.me/gciatto))
+- [TuCSoN example](https://gitlab.com/pika-lab/courses/ds/aa1920/lab-02) (kindly provided by [Giovanni Ciatto](https://about.me/gciatto))
 
 Slides built with reveal.js (info at the bottom of the page)
 
