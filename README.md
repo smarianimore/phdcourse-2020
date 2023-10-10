@@ -1,6 +1,6 @@
 # README
 
-Slides for the PhD course "Emerging IT technologies: Autonomous Systems and Blockchains" of the **XXXVI Cycle** of the **Doctorate School in Industrial Innovation Engineering**, **University of Modena and Reggio Emilia**.
+Slides for the PhD course "Emerging IT technologies: Autonomous Systems and Blockchains" of the **XXXVI, XXXVII, and XXXVIII Cycles** of the **Doctorate School in Industrial Innovation Engineering**, **University of Modena and Reggio Emilia**.
 
 Home page of the course: [https://github.com/smarianimore/phdXXXVI-asb](https://github.com/smarianimore/phdXXXVI-asb)
 
